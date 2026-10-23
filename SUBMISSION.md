@@ -97,11 +97,13 @@ programme gating funding on a milestone condition being falsifiable.
 |---|---|
 | Direct Mode tests | 186 passed |
 | Preflight invariants | 134 / 134 |
+| Mutation sweep | 74 / 85 killed, 11 equivalent by construction, 0 survived |
 | GenVM lint | passed, 3 checks |
 | GenVM check | 21 methods, 13 view / 8 write |
 | Live scenarios | 8 / 8, nineteen assertions, every one held |
-| Live re-verification off chain | see `docs/proofs/live.md` |
-| Integration suite | 4 tests, each on its own fresh deployment |
+| Live re-verification off chain | 97 checks, 0 discrepancies |
+| Clean-clone reproduction | contract byte-identical, `live.md` rebuilt byte-identical |
+| Integration suite | 4 / 4 on live Studionet, each on its own fresh deployment |
 
 Evidence: [`docs/proofs/live.md`](docs/proofs/live.md), rebuilt from the
 chain read-only with no key.

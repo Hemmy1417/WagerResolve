@@ -222,13 +222,25 @@ Everything below was measured at the deployed source.
 
 | Gate | Result | How to reproduce |
 |---|---|---|
-| Direct Mode suite | 186 passed | `python -m pytest tests/direct -q` |
+| Direct Mode suite | 187 passed | `python -m pytest tests/direct -q` |
 | Preflight invariants | 134 / 134 | `python scripts/preflight.py` |
 | GenVM lint | passed, 3 checks | `genvm-lint lint contracts/wagerresolve.py` |
 | GenVM check | 21 methods, 13 view / 8 write | `genvm-lint check contracts/wagerresolve.py` (linter 0.10.0) |
+| Mutation sweep | 74 / 85 killed, 11 equivalent by construction, 0 survived | `python -u scripts/mutate.py` |
 | Live scenarios | 8 / 8, nineteen assertions, every one held | `python scripts/live.py --commit <sha>` |
 | Live re-verification | 97 checks, 0 discrepancies | `python scripts/verify.py` |
 | Integration suite | 4 tests, each on a fresh deployment | `gltest tests/integration -v -s --network studionet` |
+
+The mutation sweep is the gate worth explaining first: a green suite
+says the contract passes its tests, not that the tests would notice if a
+guard were deleted. This one removes or reverses each rule in turn and
+runs the whole suite against the result. It found a real defect - an
+oversized source page made an honest payload fail its own gate, so a
+proposition naming one could never be assessed at all - and then found
+that the test written to guard the fix was blind to it, because it used
+a page exactly one byte over the cap, which is the value the fix clamps
+to. Every one of the eleven equivalents carries a written argument in
+`EQUIVALENT` naming the sibling check that makes it unreachable.
 
 The live re-verification is the gate worth explaining: `scripts/verify.py`
 holds no key and sends no transaction. It reads the ledger the run wrote,

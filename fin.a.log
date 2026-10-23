@@ -1,0 +1,31 @@
+85 mutations, every anchor matched
+baseline: running the suite against the committed contract
+baseline PASS
+killed   verdict: an unfalsifiable question is admitted
+killed   verdict: an ambiguous question is admitted
+killed   verdict: an incomplete rule is admitted
+killed   verdict: the source floor is not enforced
+killed   verdict: the publisher floor is not enforced
+killed   verdict: the precedence is reversed
+killed   verdict: the source floor uses the wrong comparison
+killed   gate: anything assessed admits a stake
+killed   gate: freshness is not required
+killed   gate: a disabled venue still admits
+killed   freshness: a superseded ruling stays in force
+killed   freshness: the window never expires
+killed   freshness: a settled question is still open to stakes
+killed   freshness: an unassessed proposition reads fresh
+killed   freshness: an unusable as-of reads fresh
+killed   closed: an unread round is a verdict about the question
+killed   closed: an unparseable panel answer is tolerated
+killed   closed: a reachable page counts without publishing the quantity
+EQUIVALENT closed: rounds never run out
+EQUIVALENT answer: a missing key is tolerated
+killed   answer: an integer passes for a boolean
+killed   answer: an unknown reason enum is accepted
+
+20/22 mutants killed, 2 equivalent by construction, 0 survived
+EQUIVALENT: closed: rounds never run out
+    unreachable from outside: `_store_round` sets EXHAUSTED as soon as the cap is reached, and EXHAUSTED is not in ACTIVE_STATUSES, so the status check at the top of `assess_proposition` refuses before the round count is ever consulted. It stays because it is the bound stated in the error a caller sees, and because the status rule it hides behind is one edit away from not covering it.
+EQUIVALENT: answer: a missing key is tolerated
+    unreachable: every key the loop checks is independently validated below it. The three findings go through `_exact_bool`, which refuses the `None` a missing key yields; the three reasons are checked for `str` and for membership of REASONS; and `sources` is checked for `list`. So a missing key returns None either way. The loop stays because it names the problem in one place for the receipt, and because a key added later would not automatically be covered by the checks below.
