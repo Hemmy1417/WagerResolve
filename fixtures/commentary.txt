@@ -1,0 +1,15 @@
+NORTHWIND STATISTICAL OFFICE - SYNTHETIC TEST DOCUMENT
+About the reference rate
+
+The reference rate matters to households and businesses because it feeds
+through to mortgages, savings and the cost of commercial credit. Our
+economists publish commentary on the direction of travel, the pressures the
+committee weighs, and how conditions compare with previous cycles.
+
+Readers often ask how quickly a change reaches the wider economy. The honest
+answer is that it varies: some contracts reprice immediately, others only at
+renewal, and sentiment can move well before any instrument does.
+
+This page carries no figures. For the published series, consult the daily
+rate table. This document is synthetic and exists only to exercise a test
+suite.

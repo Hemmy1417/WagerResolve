@@ -1,0 +1,16 @@
+NORTHWIND STATISTICAL OFFICE - SYNTHETIC TEST DOCUMENT
+Reference policy rate, published each business day at 16:00 UTC.
+
+Date          Reference rate (%)   Status
+2026-10-19    4.25                 final
+2026-10-20    4.25                 final
+2026-10-21    4.50                 final
+2026-10-22    4.50                 final
+2026-10-23    4.50                 provisional
+
+Methodology: the reference rate is the volume-weighted median of overnight
+unsecured lending reported by member institutions before 15:30 UTC. Values
+marked provisional are confirmed on the following business day and are not
+revised thereafter except to correct a reporting error.
+
+This document is synthetic and exists only to exercise a test suite.

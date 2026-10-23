@@ -447,7 +447,15 @@ ANSWER_KEYS = ("falsifiable", "falsifiable_reason", "unambiguous",
 
 
 def _json_object(raw):
-    """Parse a model reply that may be fenced, or return None."""
+    """A model reply as a dict, or None.
+
+    `exec_prompt(response_format="json")` hands back an already-decoded
+    object, while a payload arriving from another node is always text. Both
+    shapes reach here, and a reply that is a list, a number or a fenced
+    string that will not parse is None rather than something to repair.
+    """
+    if type(raw) is dict:
+        return raw
     if type(raw) is bytes:
         try:
             raw = raw.decode("utf-8")
