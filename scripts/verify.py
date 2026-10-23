@@ -262,12 +262,18 @@ def main() -> int:
                       "panel_state"):
             row(field.replace("_", " "), stored[field],
                 stored[field] == expected[field])
-        gate = reader.view("is_admissible",
-                           [pid, time.strftime("%Y-%m-%dT%H:%MZ",
-                                               time.gmtime())])
-        row("is_admissible agrees with the verdict", gate,
+        now = time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime())
+        fresh = reader.view("admission_freshness", [pid, now])
+        gate = reader.view("is_admissible", [pid, now])
+        row("freshness, asked now", fresh, True)
+        # The gate is the conjunction, not the verdict alone. Scenario H
+        # tightens a venue's policy, so a question that really was ruled
+        # DECIDABLE correctly stops admitting a stake once the policy it
+        # was decided under is no longer the one in force.
+        row("is_admissible agrees with verdict and freshness", gate,
             gate == (stored["admission"] == "DECIDABLE"
-                     and stored["status"] == "ASSESSED"))
+                     and stored["status"] == "ASSESSED"
+                     and fresh == "FRESH"))
         say()
 
     say("## The contract's own counters")

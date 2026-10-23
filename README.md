@@ -10,6 +10,22 @@ It rules on the **question**, not the outcome. It never learns who won, and
 it never holds a single atto.
 
 <!-- DEPLOYMENT:START -->
+## Canonical deployment
+
+| | |
+|---|---|
+| Network | GenLayer Studionet, chain **61999** |
+| Contract | [`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) |
+| Deploy transaction | [`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) |
+| sha256 of those bytes | `5e9731e8ae6f848b9cfe9219070864ba73fab1306c9a50247d7838f322056b03` |
+| Size | 69,895 bytes |
+| Finality | FINALIZED, SUCCESS |
+| Consensus | 3 agree, 0 disagree, 2 idle of 5 |
+| Source parity | read back with `gen_getContractCode`: **byte-identical** |
+
+The deployed bytes are the committed file, and that is checked rather than
+asserted - [`docs/proofs/live.md`](docs/proofs/live.md) carries the hash
+re-read from the chain.
 <!-- DEPLOYMENT:END -->
 
 ## The problem
@@ -202,6 +218,26 @@ admission is not complete SSRF prevention**.
 ## Verification
 
 <!-- GATES:START -->
+Everything below was measured at the deployed source.
+
+| Gate | Result | How to reproduce |
+|---|---|---|
+| Direct Mode suite | 165 passed | `python -m pytest tests/direct -q` |
+| Preflight invariants | 134 / 134 | `python scripts/preflight.py` |
+| GenVM lint | passed, 3 checks | `genvm-lint lint contracts/wagerresolve.py` |
+| GenVM check | 21 methods, 13 view / 8 write | `genvm-lint check contracts/wagerresolve.py` (linter 0.10.0) |
+| Live scenarios | 8 / 8, nineteen assertions, every one held | `python scripts/live.py --commit <sha>` |
+| Live re-verification | 97 checks, 0 discrepancies | `python scripts/verify.py` |
+| Integration suite | 4 tests, each on a fresh deployment | `gltest tests/integration -v -s --network studionet` |
+
+The live re-verification is the gate worth explaining: `scripts/verify.py`
+holds no key and sends no transaction. It reads the ledger the run wrote,
+asks the network to confirm every claim in it, and rebuilds
+[`docs/proofs/live.md`](docs/proofs/live.md). Anyone can run it.
+
+One note for a reviewer: `genvm-linter` **0.11.0** cannot validate against
+the runner this contract pins and reports `Failed to load SDK`. 0.10.0
+validates and reports the 21 methods above; `lint` passes on both.
 <!-- GATES:END -->
 
 ## Reviewer fast path
