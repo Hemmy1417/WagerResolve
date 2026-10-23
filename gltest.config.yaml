@@ -1,0 +1,7 @@
+networks:
+  studionet:
+    url: https://studio.genlayer.com/api
+    chain_id: 61999
+default_network: studionet
+paths:
+  contracts: contracts

@@ -1,0 +1,2 @@
+# The contract has no runtime dependencies beyond the GenVM runner
+# pinned in the Depends header of contracts/wagerresolve.py.
