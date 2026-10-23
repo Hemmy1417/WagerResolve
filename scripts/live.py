@@ -235,6 +235,16 @@ class Run:
             say("  fixture %-26s %d bytes" % (name, len(body)))
 
 
+def now_stamp():
+    """The instant to ask a freshness question at, read when it is asked.
+
+    Not captured once at the start: an admission is fresh relative to NOW,
+    and a stamp taken before the round would answer a different question
+    from the one a venue actually asks.
+    """
+    return time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime())
+
+
 def expect(label, got, want):
     if got != want:
         raise SystemExit("ASSERTION FAILED %s: got %r, want %r"
@@ -345,7 +355,7 @@ def main() -> int:
         ruling = json.loads(run.read("get_ruling", [pid]))
         expect("%s admission" % code, ruling["admission"], want)
         expect("%s is_admissible" % code,
-               run.read("is_admissible", [pid, settles[:11] + "00:00Z"]),
+               run.read("is_admissible", [pid, now_stamp()]),
                want == "DECIDABLE")
         run.scenarios[code.lower()] = {
             "title": title, "proposition_id": pid, "venue_id": at_venue,
@@ -400,15 +410,14 @@ def main() -> int:
 
     a_id = run.scenarios["a"]["proposition_id"]
     expect("H the admitted question still stands",
-           run.read("is_admissible", [a_id, settles[:11] + "00:00Z"]), True)
+           run.read("is_admissible", [a_id, now_stamp()]), True)
     run.write("tighten %s" % venue, "set_venue_policy",
               [venue, "OWNER_ONLY", 2, 2, 400, 1440])
     expect("H the old ruling is superseded",
-           run.read("admission_freshness",
-                    [a_id, settles[:11] + "00:00Z"]), "SUPERSEDED")
+           run.read("admission_freshness", [a_id, now_stamp()]),
+           "SUPERSEDED")
     expect("H and no longer admits a stake",
-           run.read("is_admissible", [a_id, settles[:11] + "00:00Z"]),
-           False)
+           run.read("is_admissible", [a_id, now_stamp()]), False)
     run.scenarios["h"] = {
         "title": "withdrawal returns the slot, a policy change supersedes",
         "proposition_id": pid, "venue_id": venue,
