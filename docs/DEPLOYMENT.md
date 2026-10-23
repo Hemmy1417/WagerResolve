@@ -72,6 +72,26 @@ deployment still has to say how that contract got there - and the driver
 reads that receipt back off the chain and checks the transaction really
 created that address, rather than taking a constant on trust.
 
+## What a rebuild does and does not promise
+
+`scripts/verify.py` rebuilds [`proofs/live.md`](proofs/live.md) from the
+chain, and two rebuilds minutes apart agree exactly. That is worth stating
+carefully, because it is not the same as the document being frozen.
+
+Everything the proof reports about the past - the deployed bytes, every
+transaction's lifecycle and votes, every stored ruling - is settled, and
+will read the same in a year. The **freshness** rows are not: they are
+evaluated at the instant they are asked, which is the whole point of
+read-time freshness. Scenario E's venue was never tightened, so once its
+24-hour window passes a later rebuild will read `STALE` where an earlier
+one read `FRESH`. That is the contract being right rather than the document
+being unstable, and the proof says so in its own header.
+
+An earlier version of this file carried the rebuild's wall clock in a
+header row, which made two honest rebuilds differ by a line that said
+nothing. That line is now the run's recorded instant, taken from the
+ledger.
+
 ## The eight live scenarios
 
 Recorded in [`proofs/live.md`](proofs/live.md), re-read off the chain.

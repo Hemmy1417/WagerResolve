@@ -233,7 +233,12 @@ Everything below was measured at the deployed source.
 The live re-verification is the gate worth explaining: `scripts/verify.py`
 holds no key and sends no transaction. It reads the ledger the run wrote,
 asks the network to confirm every claim in it, and rebuilds
-[`docs/proofs/live.md`](docs/proofs/live.md). Anyone can run it.
+[`docs/proofs/live.md`](docs/proofs/live.md). Anyone can run it, and two
+rebuilds agree - with one honest exception, explained in
+[`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): the freshness rows are
+evaluated when they are asked, so a ruling whose venue window has passed
+reads `STALE` in a later rebuild. A clean clone reproduces the contract
+byte-for-byte and re-verifies the chain with no key.
 
 One note for a reviewer: `genvm-linter` **0.11.0** cannot validate against
 the runner this contract pins and reports `Failed to load SDK`. 0.10.0

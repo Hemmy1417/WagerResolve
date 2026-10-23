@@ -165,8 +165,15 @@ def main() -> int:
     say("| Deploy transaction | [`%s`](%s/tx/%s) |"
         % (led["deploy_tx"], explorer, led["deploy_tx"]))
     say("| Source commit | `%s` |" % led["commit"])
-    say("| Re-read at | %s UTC |"
-        % time.strftime("%Y-%m-%d %H:%M", time.gmtime()))
+    say("| Run recorded at | %s |" % led["as_of"])
+    say()
+    say("This document is rebuilt from the chain, so two rebuilds should")
+    say("agree. It is not frozen, though: the freshness rows below are")
+    say("evaluated at the moment they are asked, which is the whole point")
+    say("of read-time freshness - a ruling whose venue window passes will")
+    say("read `STALE` in a later rebuild than in an earlier one, and that")
+    say("is the contract being right rather than the document being")
+    say("unstable.")
     say()
 
     say("## The deployed bytes are the committed source")

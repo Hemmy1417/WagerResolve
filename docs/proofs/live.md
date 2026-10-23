@@ -10,7 +10,15 @@ Nothing here is copied from the run that produced it.
 | Contract | [`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) |
 | Deploy transaction | [`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) |
 | Source commit | `5e54e28` |
-| Re-read at | 2026-10-23 11:12 UTC |
+| Run recorded at | 2026-10-23T11:09Z |
+
+This document is rebuilt from the chain, so two rebuilds should
+agree. It is not frozen, though: the freshness rows below are
+evaluated at the moment they are asked, which is the whole point
+of read-time freshness - a ruling whose venue window passes will
+read `STALE` in a later rebuild than in an earlier one, and that
+is the contract being right rather than the document being
+unstable.
 
 ## The deployed bytes are the committed source
 
