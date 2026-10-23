@@ -1,0 +1,15 @@
+NORTHWIND CLEARING HOUSE - SYNTHETIC TEST DOCUMENT
+Reference rate, as received from the statistical office and republished
+each business day at 16:30 UTC for settlement purposes.
+
+2026-10-19   4.25
+2026-10-20   4.25
+2026-10-21   4.50
+2026-10-22   4.50
+2026-10-23   4.50  (provisional)
+
+The clearing house republishes the figure without adjustment. Where the
+statistical office later corrects a reporting error, the corrected value
+replaces the one shown here on the next publication.
+
+This document is synthetic and exists only to exercise a test suite.
