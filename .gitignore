@@ -9,3 +9,4 @@ __pycache__/
 artifacts/
 sweep*.log
 .DS_Store
+final*.log
