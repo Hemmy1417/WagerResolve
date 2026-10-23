@@ -143,6 +143,9 @@ class Run:
         self.client = create_client(chain=chains.studionet,
                                     account=self.account)
         self.address = address
+        self.deploy_tx = None
+        self.deploy_lifecycle = None
+        self.deploy_consensus = None
         self.transactions = []
         self.scenarios = {}
         self.documents = {}
@@ -189,6 +192,30 @@ class Run:
                                   "execution": execution_result(receipt),
                                   "consensus": consensus_summary(receipt)})
         say("contract %s" % self.address)
+
+    def adopt(self, tx_hash):
+        """Reuse a deployment, reading its facts back off the chain.
+
+        A run that reuses an address still has to state how that contract
+        got there, and the only honest source for that is the deployment
+        receipt - not a constant typed into this file.
+        """
+        receipt = self.wait("deploy receipt", tx_hash)
+        self.deploy_tx = tx_hash
+        self.deploy_lifecycle = lifecycle(receipt)
+        self.deploy_consensus = consensus_summary(receipt)
+        got = (receipt.get("data", {}) or {}).get("contract_address")             or receipt.get("contract_address")
+        if got and str(got).lower() != str(self.address).lower():
+            raise SystemExit(
+                "that deploy transaction created %s, not %s" % (got,
+                                                                self.address))
+        say("reusing %s, deployed by %s" % (self.address, tx_hash))
+        say("deploy lifecycle %s, %s"
+            % (self.deploy_lifecycle, self.deploy_consensus))
+        self.transactions.append({"what": "deploy", "tx": tx_hash,
+                                  "lifecycle": self.deploy_lifecycle,
+                                  "execution": execution_result(receipt),
+                                  "consensus": self.deploy_consensus})
 
     def write(self, what, method, args):
         """One submission. Never retried: it may already have landed."""
@@ -256,6 +283,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--commit", required=True)
     parser.add_argument("--address")
+    parser.add_argument("--deploy-tx", dest="deploy_tx",
+                        help="required with --address: how it got there")
     args = parser.parse_args()
 
     run = Run(args.commit, args.address)
@@ -270,6 +299,11 @@ def main() -> int:
 
     if run.address is None:
         run.deploy()
+    else:
+        if not args.deploy_tx:
+            raise SystemExit("--address needs --deploy-tx, so the ledger "
+                             "can state how that contract was deployed")
+        run.adopt(args.deploy_tx)
     say()
 
     settles = time.strftime("%Y-%m-%dT%H:%MZ",
