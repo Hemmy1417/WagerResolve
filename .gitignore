@@ -10,3 +10,4 @@ artifacts/
 sweep*.log
 .DS_Store
 final*.log
+fin*.log
