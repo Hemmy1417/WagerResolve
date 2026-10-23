@@ -41,14 +41,24 @@ GOOD_RULE = ("Read the reference rate for 2026-10-21 from the rate table. "
 
 
 def _reachable() -> bool:
+    """Whether Studionet answers at all.
+
+    An HTTP error IS an answer: the RPC endpoint replies 405 to a bare
+    GET, and that proves the socket, TLS and the host are all fine. Only a
+    transport failure means unreachable. An earlier version of this got it
+    backwards and skipped the entire suite while reporting green, which is
+    worse than failing.
+    """
+    request = urllib.request.Request(
+        "https://studio.genlayer.com/api",
+        headers={"User-Agent": "Mozilla/5.0"})
     try:
-        request = urllib.request.Request(
-            "https://studio.genlayer.com/api",
-            headers={"User-Agent": "Mozilla/5.0"})
-        urllib.request.urlopen(request, timeout=10)
+        urllib.request.urlopen(request, timeout=15)
         return True
-    except Exception as err:
-        return "HTTP Error" in str(type(err).__name__) or False
+    except urllib.error.HTTPError:
+        return True
+    except Exception:
+        return False
 
 
 pytestmark = pytest.mark.skipif(
