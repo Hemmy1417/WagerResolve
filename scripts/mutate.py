@@ -183,7 +183,7 @@ MUTATIONS = [
      "or value < 0:\n            return None\n",
      "        if type(value) is not int:\n            return None\n"),
     ("payload: a byte count over the cap is accepted",
-     "        if value > FETCH_BYTES_CAP:\n            return None\n",
+     "        if value > FETCH_BYTES_CAP + 1:\n            return None\n",
      ""),
     ("payload: an unsorted readable list is accepted",
      "    if sorted(readable) != list(readable) or len(set(readable)) \\\n"
@@ -384,9 +384,11 @@ MUTATIONS = [
      "or len(body) == 0:\n        return (SOURCE_UNREACHABLE, None, 0)\n",
      ""),
     ("fetch: an oversized body is read",
-     "    if count > FETCH_BYTES_CAP:\n"
-     "        return (SOURCE_UNREACHABLE, None, count)\n",
-     ""),
+     "    if count > FETCH_BYTES_CAP:\n",
+     "    if False:\n"),
+    ("fetch: a refused page reports its true size",
+     "        return (SOURCE_UNREACHABLE, None, FETCH_BYTES_CAP + 1)\n",
+     "        return (SOURCE_UNREACHABLE, None, count)\n"),
     ("fetch: a blank page counts as a source",
      '    if text.strip() == "":\n'
      "        return (SOURCE_UNREACHABLE, None, count)\n",
