@@ -127,9 +127,11 @@ def stdout_of(receipt):
 
 
 def _hex(value):
+    """A transaction hash as 0x-text, whichever shape the SDK returns."""
     if isinstance(value, (bytes, bytearray)):
         return "0x" + bytes(value).hex()
-    return str(value)
+    text = str(value)
+    return text if text.startswith("0x") else "0x" + text
 
 
 class Run:
@@ -167,11 +169,9 @@ class Run:
         code = CONTRACT.read_bytes()
         say("deploying %d bytes, sha256 %s"
             % (len(code), hashlib.sha256(code).hexdigest()))
-        tx_hash = self.client.deploy_contract(
+        tx_hash = _hex(self.client.deploy_contract(
             code=code.decode("utf-8"), args=[],
-            consensus_max_rotations=3).hex()
-        if not tx_hash.startswith("0x"):
-            tx_hash = "0x" + tx_hash
+            consensus_max_rotations=3))
         receipt = self.wait("deploy receipt", tx_hash)
         self.address = receipt.get("data", {}).get("contract_address") \
             or receipt.get("contract_address")
@@ -193,11 +193,9 @@ class Run:
     def write(self, what, method, args):
         """One submission. Never retried: it may already have landed."""
         time.sleep(PACE)
-        tx_hash = self.client.write_contract(
+        tx_hash = _hex(self.client.write_contract(
             address=self.address, function_name=method, args=args,
-            value=0, consensus_max_rotations=3).hex()
-        if not tx_hash.startswith("0x"):
-            tx_hash = "0x" + tx_hash
+            value=0, consensus_max_rotations=3))
         receipt = self.wait(what, tx_hash)
         result = execution_result(receipt)
         say("  %-44s %s  %s" % (what, result, consensus_summary(receipt)))
