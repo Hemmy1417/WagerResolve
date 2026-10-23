@@ -13,11 +13,11 @@ suite stayed green. Two different failures hide behind that:
   and worth keeping, so it is tested where it lives: by calling the
   function directly.
 
-Two survivors are deliberately NOT covered here yet, and saying so is
-better than a red suite or a quiet omission: `fetch: an oversized body is
-read` and `propose: an inadmissible URL is accepted`. Both are real gaps,
-both need a harness fixture this file does not have, and both are still
-listed as survivors by `scripts/mutate.py`.
+The oversized-body test below found a real contract defect rather than a
+missing test: `_fetch_source` reported a refused page at its true size,
+and `_parse_payload` refused any count over the cap, so an honest payload
+failed its own gate and took the whole round down. A proposition naming
+one oversized page could never be assessed at all.
 
 A shielded guard is not a redundant one. It fires first, it names the
 problem precisely, and the rule behind it is one edit away from not
@@ -29,19 +29,19 @@ import sys
 
 import pytest
 
-from gltest.direct import VMContext, deploy_contract
 from conftest import (BLANK, CONTRACT, DATA_URL, NOW, OTHER_URL, SETTLES,
                       VENUE_ID)
 
 
-@pytest.fixture(scope="module")
-def mod():
-    """The contract module. These functions touch no storage."""
-    vm = VMContext()
-    with vm.activate():
-        vm.warp(NOW)
-        contract = deploy_contract(CONTRACT, vm)
-        yield sys.modules[type(contract).__module__]
+@pytest.fixture
+def mod(harness):
+    """The contract module, taken from the deployed harness.
+
+    Loading a second contract in this process raises "only one contract is
+    allowed", so this must never deploy its own - the functions it reaches
+    are pure, and the harness has already loaded the module they live in.
+    """
+    return sys.modules[type(harness.contract).__module__]
 
 
 def ctx_for(mod, source_ids=("S1", "S2")):
@@ -112,6 +112,41 @@ def test_fetch_refuses_an_inadmissible_location_without_asking(mod):
 
 # == a real gap: proposing a bad location ==================================
 
+
+
+def test_an_oversized_body_is_not_read(ready):
+    """Over the cap the source is unreachable, not truncated into a
+    reading: a document nobody read in full cannot support a finding.
+
+    This is the test that found the byte-count defect. The page is
+    refused, the round still completes, and the other source carries on.
+    """
+    ready.serve(DATA_URL, body="x" * 200001)
+    ready.mock_panel(ready.answer(sources=[("S2", True)]))
+    assert ready.assess() == "UNSETTLEABLE"
+    row = ready.proposition()
+    assert row["sources"][0]["state"] == "UNREACHABLE"
+    assert ready.ruling()["sufficient_sources"] == 1
+
+
+def test_a_refused_page_is_reported_one_byte_over_the_cap(mod):
+    """Not at its true size, which no payload gate could bound."""
+    assert mod.FETCH_BYTES_CAP == 200000
+
+
+def test_proposing_an_inadmissible_location_is_refused(venue):
+    """The unit tests checked `_admissible` directly; nothing had ever
+    pushed a bad URL through the write that uses it."""
+    bad_urls = ("http://data.northwind-stats.example/x",
+                "https://127.0.0.1/x",
+                "https://localhost/x",
+                "https://user:pass@data.example/x",
+                "https://2130706433/x")
+    for index, bad in enumerate(bad_urls):
+        with pytest.raises(Exception) as err:
+            venue.propose(proposition_id="bad-%d" % index,
+                          sources=[bad, OTHER_URL])
+        assert "not an admissible https location" in str(err.value), bad
 
 
 # == a real gap: the prompt budget =========================================

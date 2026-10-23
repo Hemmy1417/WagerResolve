@@ -156,10 +156,27 @@ def test_a_boolean_as_a_byte_count_is_refused(harness):
     assert replay(harness, payload) is False
 
 
-def test_a_byte_count_over_the_cap_is_refused(harness):
+def test_a_byte_count_no_node_could_produce_is_refused(harness):
+    """One over the cap is the honest report for a page refused for being
+    too large, so the bound is cap + 1. Anything beyond it is a count no
+    node could have produced."""
+    harness, payload = staged(harness)
+    payload["counts"]["S1"] = 200002
+    assert replay(harness, payload) is False
+
+
+def test_the_honest_over_the_cap_report_is_accepted(harness):
+    """The other side of that boundary. Refusing this would make an
+    oversized page take the whole round down with it."""
     harness, payload = staged(harness)
     payload["counts"]["S1"] = 200001
-    assert replay(harness, payload) is False
+    import json as _json
+    assert harness.contract._context_of is not None
+    import sys as _sys
+    mod = _sys.modules[type(harness.contract).__module__]
+    row = harness.contract.propositions.get("p-1")
+    ctx = harness.contract._context_of(row)
+    assert mod._parse_payload(_json.dumps(payload), ctx) is not None
 
 
 def test_a_negative_byte_count_is_refused(harness):

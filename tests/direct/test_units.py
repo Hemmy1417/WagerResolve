@@ -12,18 +12,18 @@ import sys
 
 import pytest
 
-from gltest.direct import VMContext, deploy_contract
 from conftest import CONTRACT, NOW
 
 
-@pytest.fixture(scope="module")
-def mod():
-    """The contract module, loaded once: these functions touch no state."""
-    vm = VMContext()
-    with vm.activate():
-        vm.warp(NOW)
-        contract = deploy_contract(CONTRACT, vm)
-        yield sys.modules[type(contract).__module__]
+@pytest.fixture
+def mod(harness):
+    """The contract module, taken from the deployed harness.
+
+    Loading a second contract in this process raises "only one contract is
+    allowed", so this must never deploy its own - the functions it reaches
+    are pure, and the harness has already loaded the module they live in.
+    """
+    return sys.modules[type(harness.contract).__module__]
 
 
 # == URL admission =========================================================

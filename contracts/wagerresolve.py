@@ -670,7 +670,14 @@ def _fetch_source(url: str) -> tuple:
     body = bytes(body)
     count = len(body)
     if count > FETCH_BYTES_CAP:
-        return (SOURCE_UNREACHABLE, None, count)
+        # Reported as one byte over the cap rather than at its true size.
+        # Past the cap this node stopped caring how big the page is, and
+        # the count has to stay inside the bound `_parse_payload`
+        # enforces: an honest report of a 40MB page would otherwise fail
+        # its own gate and take the whole round down with it. That is how
+        # this was found - a mutation survived, the test written to kill
+        # it failed, and the contract was wrong rather than the test.
+        return (SOURCE_UNREACHABLE, None, FETCH_BYTES_CAP + 1)
     try:
         text = body.decode("utf-8")
     except Exception:
@@ -832,7 +839,10 @@ def _parse_payload(raw, ctx: dict):
         value = counts.get(source_id)
         if type(value) is not int or _exact_bool(value) or value < 0:
             return None
-        if value > FETCH_BYTES_CAP:
+        # One over the cap is the honest report for a page this node
+        # refused for being too large; anything beyond that is a count no
+        # node could have produced.
+        if value > FETCH_BYTES_CAP + 1:
             return None
 
     rows = shape.get("sources")
