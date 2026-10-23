@@ -392,7 +392,7 @@ BLOB = "\n".join(PROSE).lower() + "\n" + "\n".join(
     line for line in TEXT.split("\n") if line.strip().startswith("#")).lower()
 
 for word in ("guarantees perfect", "prevents all", "cannot be attacked",
-             "完全", "100% secure", "impossible to"):
+             "100% secure", "impossible to", "fully secure"):
     check("no absolute security claim: %r" % word, word not in BLOB)
 check("the SSRF limitation is stated",
       "not a complete ssrf" in BLOB or "not a security boundary" in BLOB)
