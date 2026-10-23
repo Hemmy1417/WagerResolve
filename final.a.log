@@ -1,0 +1,23 @@
+85 mutations, every anchor matched
+baseline: running the suite against the committed contract
+baseline PASS
+killed   verdict: an unfalsifiable question is admitted
+killed   verdict: an ambiguous question is admitted
+killed   verdict: an incomplete rule is admitted
+killed   verdict: the source floor is not enforced
+killed   verdict: the publisher floor is not enforced
+killed   verdict: the precedence is reversed
+killed   verdict: the source floor uses the wrong comparison
+killed   gate: anything assessed admits a stake
+killed   gate: freshness is not required
+killed   gate: a disabled venue still admits
+killed   freshness: a superseded ruling stays in force
+killed   freshness: the window never expires
+killed   freshness: a settled question is still open to stakes
+SURVIVED freshness: an unassessed proposition reads fresh
+killed   freshness: an unusable as-of reads fresh
+killed   closed: an unread round is a verdict about the question
+killed   closed: an unparseable panel answer is tolerated
+killed   closed: a reachable page counts without publishing the quantity
+SURVIVED closed: rounds never run out
+SURVIVED answer: a missing key is tolerated

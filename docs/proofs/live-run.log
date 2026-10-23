@@ -1,7 +1,7 @@
 WagerResolve live run
-commit 5e54e28
-signer 0x9Ae8dF0b6645D2C3B12BeFB04163e22db98584a5
-faucet: funded 0x9Ae8dF0b6645D2C3B12BeFB04163e22db98584a5
+commit 6495608
+signer 0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14
+faucet: funded 0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14
 
 fixtures, as the chain will fetch them:
   fixture rate-table.txt             726 bytes
@@ -9,64 +9,65 @@ fixtures, as the chain will fetch them:
   fixture commentary.txt             742 bytes
   fixture directed.txt               480 bytes
 
-reusing 0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78, deployed by 0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200
-deploy lifecycle FINALIZED, 3 agree, 0 disagree, 2 idle of 5
+deploying 70595 bytes, sha256 9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c
+deploy tx 0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3
+deploy lifecycle FINALIZED, execution SUCCESS, 3 agree, 0 disagree, 2 idle of 5
+contract 0x372916848A6E08464Bbd68d243807A3D7Aaf8065
 
 venues
-  register venue northwind-5e54e2-16b5         SUCCESS  5 agree, 0 disagree, 0 idle of 5
-  register venue strict-5e54e2-16b5 (two publishers) SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  register venue northwind-649560-6ac0         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  register venue strict-649560-6ac0 (two publishers) SUCCESS  5 agree, 0 disagree, 0 idle of 5
 
 A - a well-posed question on two published copies
-  propose a-5e54e2-16b5                        SUCCESS  4 agree, 0 disagree, 1 idle of 5
-  assess a-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose a-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess a-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  A admission                                          DECIDABLE
   ok  A is_admissible                                      True
 
 B - one source carries no figures at all
-  propose b-5e54e2-16b5                        SUCCESS  4 agree, 0 disagree, 1 idle of 5
-  assess b-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose b-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess b-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  B admission                                          UNSETTLEABLE
   ok  B is_admissible                                      False
 
 C - a question nobody could settle either way
-  propose c-5e54e2-16b5                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
-  assess c-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose c-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess c-649560-6ac0                         SUCCESS  3 agree, 1 disagree, 1 idle of 5
   ok  C admission                                          UNFALSIFIABLE
   ok  C is_admissible                                      False
 
 D - a question two honest readers would read differently
-  propose d-5e54e2-16b5                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess d-5e54e2-16b5                         SUCCESS  3 agree, 1 disagree, 1 idle of 5
+  propose d-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess d-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  D admission                                          AMBIGUOUS
   ok  D is_admissible                                      False
 
 E - two sources, one publisher, a venue that wants two
-  propose e-5e54e2-16b5                        SUCCESS  4 agree, 0 disagree, 1 idle of 5
-  assess e-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose e-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess e-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  E admission                                          UNSETTLEABLE
   ok  E is_admissible                                      False
 
 F - a page that tells the reader what to answer
-  propose f-5e54e2-16b5 failed (GenLayerError); retrying in 2s
-  propose f-5e54e2-16b5                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess f-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose f-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess f-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  F admission                                          UNSETTLEABLE
   ok  F is_admissible                                      False
 
 G - a source that cannot be fetched
-  propose g-5e54e2-16b5                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess g-5e54e2-16b5                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose g-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess g-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  G admission                                          UNSETTLEABLE
   ok  G one source read                                    1
 
 H - withdrawal returns the slot, and a policy change supersedes
-  propose h-5e54e2-16b5                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  propose h-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  H a proposal takes a slot                            1
-  withdraw h-5e54e2-16b5                       SUCCESS  4 agree, 0 disagree, 1 idle of 5
+  withdraw h-649560-6ac0                       SUCCESS  5 agree, 0 disagree, 0 idle of 5
   ok  H withdrawal returns it                              0
   ok  H the admitted question still stands                 True
-  tighten northwind-5e54e2-16b5                SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  tighten northwind-649560-6ac0                SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  H the old ruling is superseded                       SUPERSEDED
   ok  H and no longer admits a stake                       False
 
-counters {"decidable": 4, "propositions": 21, "refused": 15, "venues": 8}
+counters {"decidable": 1, "propositions": 8, "refused": 6, "venues": 2}

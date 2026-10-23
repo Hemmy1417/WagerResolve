@@ -1,0 +1,28 @@
+85 mutations, every anchor matched
+baseline: running the suite against the committed contract
+baseline PASS
+killed   url: a malformed label is accepted
+killed   url: the length cap is not enforced
+killed   publisher: every url counts as its own publisher
+SURVIVED publisher: a subdomain is a different publisher
+killed   publisher: duplicates are counted twice
+killed   time: an instant is not normalised
+killed   time: a short instant is accepted
+killed   time: an impossible month or day is accepted
+killed   time: an impossible hour or minute is accepted
+killed   time: the separators are not checked
+killed   prompt: the budget is not applied per document
+killed   prompt: the documents are interpolated rather than encoded
+killed   fetch: a failed status is read anyway
+killed   fetch: an oversized body is read
+SURVIVED fetch: a refused page reports its true size
+killed   fetch: a blank page counts as a source
+killed   fetch: an inadmissible url is fetched anyway
+killed   store: the definition hash is not recorded with the ruling
+killed   store: a ruled proposition stays open
+killed   store: the round is not counted
+killed   store: the decidable counter moves for every verdict
+
+19/21 mutants killed, 0 equivalent by construction, 2 survived
+SURVIVED: publisher: a subdomain is a different publisher
+SURVIVED: fetch: a refused page reports its true size

@@ -9,11 +9,11 @@ taught.
 |---|---|
 | Network | GenLayer Studionet, chain **61999** |
 | RPC | `https://studio.genlayer.com/api` |
-| Contract | [`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) |
-| Deploy transaction | [`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) |
+| Contract | [`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) |
+| Deploy transaction | [`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3) |
 | Source | `contracts/wagerresolve.py` |
-| sha256 | `5e9731e8ae6f848b9cfe9219070864ba73fab1306c9a50247d7838f322056b03` |
-| Size | 69,895 bytes |
+| sha256 | `9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c` |
+| Size | 70,595 bytes |
 | Lifecycle | FINALIZED |
 | Consensus | FINALIZED, SUCCESS, 3 agree / 0 disagree / 2 idle of 5 |
 
@@ -71,6 +71,33 @@ python scripts/live.py --commit <sha> --address <contract> --deploy-tx <tx>
 deployment still has to say how that contract got there - and the driver
 reads that receipt back off the chain and checks the transaction really
 created that address, rather than taking a constant on trust.
+
+## Deployment history
+
+| # | Contract | Deployed bytes | What it was |
+|---|---|---|---|
+| 1 | [`0xE8ed85AF…6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) | `5e9731e8…` | three runs, eight scenarios green - and a defect none of them could reach |
+| 2 | [`0x37291684…8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) | `9adcc1e9…` | **canonical** - eight scenarios, nineteen assertions, every one held |
+
+Deployment 1 is historical, not wrong. Its live evidence is accurate for
+the bytes it carries, and every assertion made against it held. What it
+could not show is the defect those bytes contained, because no scenario
+named a page large enough to trip it.
+
+**The defect.** `_fetch_source` reported a page refused for being too
+large at its true size, and `_parse_payload` refused any byte count over
+the cap. So an honest node's own payload failed its own gate: the round
+died with `the ratified payload did not parse`, and a proposition naming
+one oversized page could never be assessed at all - not refused, not
+retried, permanently stuck. A refused page is now reported as exactly one
+byte over the cap, and the gate admits exactly that.
+
+It was found by the mutation sweep, and not on the first attempt. The
+mutation `fetch: an oversized body is read` survived; the test written to
+kill it failed; I recorded it as an uncovered gap and moved on. Coming
+back to it showed the contract was wrong rather than the test. The sweep
+now carries a second mutation, `fetch: a refused page reports its true
+size`, which puts the defect back.
 
 ## What a rebuild does and does not promise
 

@@ -14,15 +14,15 @@ all.
 **Network** — GenLayer Studionet, chain 61999
 
 **Contract** —
-[`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78)
+[`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065)
 
 **Deploy transaction** —
-[`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200),
+[`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3),
 FINALIZED, 3 agree / 0 disagree / 2 idle of 5
 
 **Source** — `contracts/wagerresolve.py`, sha256
-`5e9731e8ae6f848b9cfe9219070864ba73fab1306c9a50247d7838f322056b03`,
-69,895 bytes. The deployed bytes are that file: `scripts/verify.py` reads
+`9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c`,
+70,595 bytes. The deployed bytes are that file: `scripts/verify.py` reads
 the contract back off the chain with `gen_getContractCode` and compares
 the hash.
 
@@ -95,7 +95,7 @@ programme gating funding on a milestone condition being falsifiable.
 
 | Gate | Result |
 |---|---|
-| Direct Mode tests | 165 passed |
+| Direct Mode tests | 186 passed |
 | Preflight invariants | 134 / 134 |
 | GenVM lint | passed, 3 checks |
 | GenVM check | 21 methods, 13 view / 8 write |

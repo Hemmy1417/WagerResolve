@@ -7,10 +7,10 @@ Nothing here is copied from the run that produced it.
 | | |
 |---|---|
 | Network | chain **61999** |
-| Contract | [`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) |
-| Deploy transaction | [`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) |
-| Source commit | `5e54e28` |
-| Run recorded at | 2026-10-23T11:09Z |
+| Contract | [`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) |
+| Deploy transaction | [`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3) |
+| Source commit | `6495608` |
+| Run recorded at | 2026-10-23T13:57Z |
 
 This document is rebuilt from the chain, so two rebuilds should
 agree. It is not frozen, though: the freshness rows below are
@@ -24,8 +24,8 @@ unstable.
 
 | Claim | Value | |
 |---|---|---|
-| the deployed contract is this source, byte for byte | `5e9731e8ae6f848b9cfe9219070864ba` | OK |
-| and the ledger agrees | `5e9731e8ae6f848b9cfe9219070864ba` | OK |
+| the deployed contract is this source, byte for byte | `9adcc1e902988d2491323e68ca35bdc0` | OK |
+| and the ledger agrees | `9adcc1e902988d2491323e68ca35bdc0` | OK |
 
 ## The documents, re-fetched
 
@@ -49,26 +49,26 @@ the votes are read here rather than taken from the run.
 
 | What | Transaction | Lifecycle | Execution | Consensus |
 |---|---|---|---|---|
-| deploy | [`0xbc2740ff7f140fc3...`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| register venue northwind-5e54e2-16b5 | [`0x237f23ca1acccc26...`](https://explorer-studio.genlayer.com/tx/0x237f23ca1acccc26adcbafae2a3b0e403ad2e617397790b6c70395448dca3e6e) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
-| register venue strict-5e54e2-16b5 (two publishers) | [`0x6573067ef1e08c3e...`](https://explorer-studio.genlayer.com/tx/0x6573067ef1e08c3eba3be24446ddb8b8c4d3f340f58edc2406c1cf738f94a216) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose a-5e54e2-16b5 | [`0x91717f7539abd0ef...`](https://explorer-studio.genlayer.com/tx/0x91717f7539abd0efacc15e204f7ad25822b444429fb11fd4ba5eec932d077252) | FINALIZED | SUCCESS | 4 agree, 0 disagree, 1 idle of 5 |
-| assess a-5e54e2-16b5 | [`0x1faa1dc1541e0696...`](https://explorer-studio.genlayer.com/tx/0x1faa1dc1541e06966ccf4933611b87b42d24bdc70ab051d6156cacbb68f9bf38) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose b-5e54e2-16b5 | [`0x238d4933fab70ed4...`](https://explorer-studio.genlayer.com/tx/0x238d4933fab70ed4aefdb422b82effe5300917c5f15a30e75a16493a99551b48) | FINALIZED | SUCCESS | 4 agree, 0 disagree, 1 idle of 5 |
-| assess b-5e54e2-16b5 | [`0x3e3ef5025a2765ff...`](https://explorer-studio.genlayer.com/tx/0x3e3ef5025a2765ffd68b40fd2f9d1b46a792d6b990b59d7ea23ecd9695b0ddfc) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose c-5e54e2-16b5 | [`0x648c40a88003ce27...`](https://explorer-studio.genlayer.com/tx/0x648c40a88003ce2735ca801550d64b696b2bc496024ea92b687106dc6457a9b6) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
-| assess c-5e54e2-16b5 | [`0x687d5fc80077ef66...`](https://explorer-studio.genlayer.com/tx/0x687d5fc80077ef6648dbe4a835f94ef474301b065b1388373f53d4b1be42feaf) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose d-5e54e2-16b5 | [`0x5b0aa4089a8530da...`](https://explorer-studio.genlayer.com/tx/0x5b0aa4089a8530da90e6e3370d7bfb349616d8ee26aa28b885db41be38062921) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| assess d-5e54e2-16b5 | [`0x3df19243be5676c9...`](https://explorer-studio.genlayer.com/tx/0x3df19243be5676c90febd2b0e34925dd0aea21e92d2168b2ebfe2ddaa66fcc4f) | FINALIZED | SUCCESS | 3 agree, 1 disagree, 1 idle of 5 |
-| propose e-5e54e2-16b5 | [`0x8a7f04d7ecb57688...`](https://explorer-studio.genlayer.com/tx/0x8a7f04d7ecb576887d4e5e475f0438156cc4e4f06f78f3b1567294cbe28e65bf) | FINALIZED | SUCCESS | 4 agree, 0 disagree, 1 idle of 5 |
-| assess e-5e54e2-16b5 | [`0x4252e8d0290938ec...`](https://explorer-studio.genlayer.com/tx/0x4252e8d0290938ec019874a92da44e763ae0dc859c4cb11326db4178224b9e7c) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose f-5e54e2-16b5 | [`0x634aad61d1f0e58a...`](https://explorer-studio.genlayer.com/tx/0x634aad61d1f0e58a7c9176b2f9d245c16062b0b15fa33960ec3319ad4ebbd54b) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| assess f-5e54e2-16b5 | [`0x033b471a001d2738...`](https://explorer-studio.genlayer.com/tx/0x033b471a001d2738758fa39831a48c6d692b0cc023e3938b6ff4e04e7965294f) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose g-5e54e2-16b5 | [`0x98a423766e0235c3...`](https://explorer-studio.genlayer.com/tx/0x98a423766e0235c34387e55f6fc7e721f9bc9e1caafa1e9123baf8393e6f99ca) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| assess g-5e54e2-16b5 | [`0x93a08c24357aec6c...`](https://explorer-studio.genlayer.com/tx/0x93a08c24357aec6ce341c1378dd457996c3b77b3b2d63b166388ea44d48d334c) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
-| propose h-5e54e2-16b5 | [`0xb2552a4dfde17b6a...`](https://explorer-studio.genlayer.com/tx/0xb2552a4dfde17b6a87fdd4071bd5e763b9fd1435be2b059ee5bc814b08e3ba02) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
-| withdraw h-5e54e2-16b5 | [`0x3557a33691458027...`](https://explorer-studio.genlayer.com/tx/0x3557a33691458027844edb2088ece1cff8fffad4985466d8d586914764ad16f4) | FINALIZED | SUCCESS | 4 agree, 0 disagree, 1 idle of 5 |
-| tighten northwind-5e54e2-16b5 | [`0x9cfddb0b0fc3e903...`](https://explorer-studio.genlayer.com/tx/0x9cfddb0b0fc3e903990b13be2c4ecb01a1104c76b0ffcb86c456867ba05eb6b3) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| deploy | [`0x58d2c2c83144e1eb...`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| register venue northwind-649560-6ac0 | [`0x1ecd1584df0049bf...`](https://explorer-studio.genlayer.com/tx/0x1ecd1584df0049bf185065ed3d2799957271b5d5559546d8cc5487f60217f575) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| register venue strict-649560-6ac0 (two publishers) | [`0xd97e628522281541...`](https://explorer-studio.genlayer.com/tx/0xd97e6285222815415079db1f69cca698113d4b77e01d5d6ab1477da7c02fa39c) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
+| propose a-649560-6ac0 | [`0xeb5ad4fc83ca9c83...`](https://explorer-studio.genlayer.com/tx/0xeb5ad4fc83ca9c837ab14264a6dbfb47efecc8eb1d4c57e4fcc2948c62f6fbad) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
+| assess a-649560-6ac0 | [`0xaa87cf63e57641a1...`](https://explorer-studio.genlayer.com/tx/0xaa87cf63e57641a1b0ebd459970f164e59b53d7df48e13b3f50202fb5ea20e95) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose b-649560-6ac0 | [`0x1039a8f5e274281a...`](https://explorer-studio.genlayer.com/tx/0x1039a8f5e274281a8d786a59023a6028411a80c6a8a3024932ba3f6f15c86d86) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
+| assess b-649560-6ac0 | [`0x3db599b86f553a0f...`](https://explorer-studio.genlayer.com/tx/0x3db599b86f553a0fc07b0e64be12ba728cfd2c8951850721d84389234987fef1) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose c-649560-6ac0 | [`0xbd8f62f15b35c309...`](https://explorer-studio.genlayer.com/tx/0xbd8f62f15b35c309e0257318eb25c8bd3743172594026b0ab5705a2c58c9f338) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| assess c-649560-6ac0 | [`0xb3620c3f443f3324...`](https://explorer-studio.genlayer.com/tx/0xb3620c3f443f3324bb59e95ba36b5433e7cc95378bf18c6b9733c3d98d068094) | FINALIZED | SUCCESS | 3 agree, 1 disagree, 1 idle of 5 |
+| propose d-649560-6ac0 | [`0xf59cae3d42835b96...`](https://explorer-studio.genlayer.com/tx/0xf59cae3d42835b9645a102255daedf28a89f2fd5939ea6afc587b50d5072aa8d) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| assess d-649560-6ac0 | [`0x96f50a40600702c6...`](https://explorer-studio.genlayer.com/tx/0x96f50a40600702c6bc0d81c1f9a25514b4b6de4ec9378c0c3088d68da1c1cff7) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose e-649560-6ac0 | [`0x6aeb2dcb67133621...`](https://explorer-studio.genlayer.com/tx/0x6aeb2dcb6713362186c2f7365e715924ce61b01e36227742ba402d41a301f49e) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
+| assess e-649560-6ac0 | [`0x016eae93c0af177e...`](https://explorer-studio.genlayer.com/tx/0x016eae93c0af177ebe8dcd2089b3e548dd27e60a529b1dc889ce2d4fec55ebd3) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose f-649560-6ac0 | [`0x1038e9dbffa9a5d6...`](https://explorer-studio.genlayer.com/tx/0x1038e9dbffa9a5d6e904afb997e189ec2b749a411f17b2bd5cf92a283af4cdd3) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| assess f-649560-6ac0 | [`0xa0cfc9282ca1d2ba...`](https://explorer-studio.genlayer.com/tx/0xa0cfc9282ca1d2baae1a2e47d83014d3168968285952c87f522a6389569808f7) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose g-649560-6ac0 | [`0xb60451c6a07d987d...`](https://explorer-studio.genlayer.com/tx/0xb60451c6a07d987d65538a950a0ba74987f8c7e08827a9ed7ca1943d4f02c8b0) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| assess g-649560-6ac0 | [`0x0d3f6e1bb1bd239f...`](https://explorer-studio.genlayer.com/tx/0x0d3f6e1bb1bd239f44e04ae6b15fa618a01e91ada4234620cb1715c84223f589) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| propose h-649560-6ac0 | [`0xedc1b0a2e0bff41e...`](https://explorer-studio.genlayer.com/tx/0xedc1b0a2e0bff41eda771a1fc43d01c59250d87332bbc68e91b45463acc9b4bf) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
+| withdraw h-649560-6ac0 | [`0xcaf7b0bbd9967bce...`](https://explorer-studio.genlayer.com/tx/0xcaf7b0bbd9967bce006996878b65bb94bbf4a81062513f9db25839ecac6a6b1c) | FINALIZED | SUCCESS | 5 agree, 0 disagree, 0 idle of 5 |
+| tighten northwind-649560-6ac0 | [`0x9be504c2a70ca687...`](https://explorer-studio.genlayer.com/tx/0x9be504c2a70ca68783b61ce18dbd31dba5dd327986293ab5c46a1e9eef999ff1) | FINALIZED | SUCCESS | 3 agree, 0 disagree, 2 idle of 5 |
 
 ## What the contract stores
 
@@ -76,7 +76,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `a-5e54e2-16b5` | OK |
+| proposition | `a-649560-6ac0` | OK |
 | admission | `DECIDABLE` | OK |
 | reason | `NONE` | OK |
 | falsifiable | `True` | OK |
@@ -94,7 +94,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `b-5e54e2-16b5` | OK |
+| proposition | `b-649560-6ac0` | OK |
 | admission | `UNSETTLEABLE` | OK |
 | reason | `RULE_NOT_TIED_TO_THE_SOURCES` | OK |
 | falsifiable | `True` | OK |
@@ -112,7 +112,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `c-5e54e2-16b5` | OK |
+| proposition | `c-649560-6ac0` | OK |
 | admission | `UNFALSIFIABLE` | OK |
 | reason | `MATTER_OF_OPINION` | OK |
 | falsifiable | `False` | OK |
@@ -130,7 +130,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `d-5e54e2-16b5` | OK |
+| proposition | `d-649560-6ac0` | OK |
 | admission | `AMBIGUOUS` | OK |
 | reason | `UNDEFINED_TERM` | OK |
 | falsifiable | `True` | OK |
@@ -148,7 +148,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `e-5e54e2-16b5` | OK |
+| proposition | `e-649560-6ac0` | OK |
 | admission | `UNSETTLEABLE` | OK |
 | reason | `RULE_NOT_TIED_TO_THE_SOURCES` | OK |
 | falsifiable | `True` | OK |
@@ -166,7 +166,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `f-5e54e2-16b5` | OK |
+| proposition | `f-649560-6ac0` | OK |
 | admission | `UNSETTLEABLE` | OK |
 | reason | `RULE_NOT_TIED_TO_THE_SOURCES` | OK |
 | falsifiable | `True` | OK |
@@ -184,7 +184,7 @@ the votes are read here rather than taken from the run.
 
 | | | |
 |---|---|---|
-| proposition | `g-5e54e2-16b5` | OK |
+| proposition | `g-649560-6ac0` | OK |
 | admission | `UNSETTLEABLE` | OK |
 | reason | `RULE_NOT_TIED_TO_THE_SOURCES` | OK |
 | falsifiable | `True` | OK |
@@ -211,10 +211,10 @@ the votes are read here rather than taken from the run.
 
 | | |
 |---|---|
-| decidable | 4 |
-| propositions | 21 |
-| refused | 15 |
-| venues | 8 |
+| decidable | 1 |
+| propositions | 8 |
+| refused | 6 |
+| venues | 2 |
 
 Only a ruled proposition moves `decidable` or `refused`, which is
 why neither equals the number of propositions.

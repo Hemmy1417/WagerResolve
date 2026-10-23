@@ -15,10 +15,10 @@ it never holds a single atto.
 | | |
 |---|---|
 | Network | GenLayer Studionet, chain **61999** |
-| Contract | [`0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) |
-| Deploy transaction | [`0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200`](https://explorer-studio.genlayer.com/tx/0xbc2740ff7f140fc3435000293fae2983176252c33f7f0663762e3d5d4cccf200) |
-| sha256 of those bytes | `5e9731e8ae6f848b9cfe9219070864ba73fab1306c9a50247d7838f322056b03` |
-| Size | 69,895 bytes |
+| Contract | [`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) |
+| Deploy transaction | [`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3) |
+| sha256 of those bytes | `9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c` |
+| Size | 70,595 bytes |
 | Finality | FINALIZED, SUCCESS |
 | Consensus | 3 agree, 0 disagree, 2 idle of 5 |
 | Source parity | read back with `gen_getContractCode`: **byte-identical** |
@@ -222,7 +222,7 @@ Everything below was measured at the deployed source.
 
 | Gate | Result | How to reproduce |
 |---|---|---|
-| Direct Mode suite | 165 passed | `python -m pytest tests/direct -q` |
+| Direct Mode suite | 186 passed | `python -m pytest tests/direct -q` |
 | Preflight invariants | 134 / 134 | `python scripts/preflight.py` |
 | GenVM lint | passed, 3 checks | `genvm-lint lint contracts/wagerresolve.py` |
 | GenVM check | 21 methods, 13 view / 8 write | `genvm-lint check contracts/wagerresolve.py` (linter 0.10.0) |
