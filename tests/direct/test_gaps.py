@@ -121,7 +121,11 @@ def test_an_oversized_body_is_not_read(ready):
     This is the test that found the byte-count defect. The page is
     refused, the round still completes, and the other source carries on.
     """
-    ready.serve(DATA_URL, body="x" * 200001)
+    # Well over the cap, not one byte over it. At exactly cap + 1 the
+    # honest clamp and the defect report the same number, so this test
+    # could not tell them apart - which the mutation sweep proved by
+    # surviving it.
+    ready.serve(DATA_URL, body="x" * 260000)
     ready.mock_panel(ready.answer(sources=[("S2", True)]))
     assert ready.assess() == "UNSETTLEABLE"
     row = ready.proposition()
@@ -129,9 +133,18 @@ def test_an_oversized_body_is_not_read(ready):
     assert ready.ruling()["sufficient_sources"] == 1
 
 
-def test_a_refused_page_is_reported_one_byte_over_the_cap(mod):
-    """Not at its true size, which no payload gate could bound."""
-    assert mod.FETCH_BYTES_CAP == 200000
+def test_a_refused_page_is_reported_one_byte_over_the_cap(mod, ready):
+    """Not at its true size, which no payload gate could bound.
+
+    Asserted on the value `_fetch_source` actually returns, for a page
+    far larger than the cap, so the clamp cannot be confused with an
+    honest count.
+    """
+    ready.serve(DATA_URL, body="y" * 260000)
+    state, text, count = mod._fetch_source(DATA_URL)
+    assert state == "UNREACHABLE"
+    assert text is None
+    assert count == mod.FETCH_BYTES_CAP + 1
 
 
 def test_proposing_an_inadmissible_location_is_refused(venue):
@@ -166,6 +179,27 @@ def test_the_prompt_carries_only_the_sources_it_was_given(mod):
     text = mod._panel_prompt(ctx_for(mod, ("S1",)), {"S1": "the figure"})
     assert '"source_id":"S1"' in text
     assert "S2" not in text.split("Answer these four questions")[0]
+
+
+# == a real gap: freshness of a proposition still in flight ==============
+
+def test_a_retryable_proposition_has_no_freshness_to_report(ready):
+    """A round that read nothing still stamps `assessed_at`, so the status
+    check in `_freshness_of` is doing real work: without it a RETRYABLE
+    proposition would fall through to the age arithmetic and could report
+    FRESH, which is a ruling it does not have.
+
+    `is_admissible` would still refuse it - the admission is NOT_ASSESSED -
+    but a consumer reading freshness on its own would be misled.
+    """
+    ready.unserve(DATA_URL)
+    ready.unserve(OTHER_URL)
+    assert ready.assess() == "NOT_ASSESSED"
+    ruling = ready.ruling()
+    assert ruling["status"] == "RETRYABLE"
+    assert ruling["assessed_at"] != ""        # the stamp really is there
+    assert ready.contract.admission_freshness("p-1", NOW) == "UNKNOWN"
+    assert ready.contract.is_admissible("p-1", NOW) is False
 
 
 # == shielded guards: the panel answer =====================================

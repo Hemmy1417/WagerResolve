@@ -423,7 +423,83 @@ MUTATIONS = [
 ]
 
 
-EQUIVALENT = {}
+EQUIVALENT = {
+    "answer: a missing key is tolerated":
+        "unreachable: every key the loop checks is independently "
+        "validated below it. The three findings go through "
+        "`_exact_bool`, which refuses the `None` a missing key yields; "
+        "the three reasons are checked for `str` and for membership of "
+        "REASONS; and `sources` is checked for `list`. So a missing key "
+        "returns None either way. The loop stays because it names the "
+        "problem in one place for the receipt, and because a key added "
+        "later would not automatically be covered by the checks below.",
+    "closed: rounds never run out":
+        "unreachable from outside: `_store_round` sets EXHAUSTED as soon "
+        "as the cap is reached, and EXHAUSTED is not in ACTIVE_STATUSES, "
+        "so the status check at the top of `assess_proposition` refuses "
+        "before the round count is ever consulted. It stays because it "
+        "is the bound stated in the error a caller sees, and because the "
+        "status rule it hides behind is one edit away from not covering "
+        "it.",
+    "answer: a duplicated source row is accepted":
+        "unreachable: a duplicate collapses in the `sources` dict, so "
+        "`len(sources) != len(wanted)` refuses it two lines later. The "
+        "explicit check stays because it names the defect precisely "
+        "instead of reporting a count that happens not to add up.",
+    "answer: the row count is not checked":
+        "unreachable: a short list leaves `sources` smaller than "
+        "`wanted`, and a long one carries a `source_id` that is not in "
+        "`wanted`. Both are refused below. The upfront count is the "
+        "cheap, legible version of the same rule.",
+    "payload: an unknown source state is accepted":
+        "unreachable: an unknown state is not SOURCE_SUFFICIENT, so the "
+        "consistency check - `claimed != (state == SOURCE_SUFFICIENT)` - "
+        "refuses any row claiming the quantity, and a row denying it "
+        "contributes nothing to the verdict. The enum check stays "
+        "because it refuses the payload rather than silently reducing "
+        "it to 'this source published nothing'.",
+    "payload: an unreadable payload may still carry findings":
+        "unreachable: an unreadable payload has `readable == []`, and "
+        "the validator compares its own readable list against it. A "
+        "node that read nothing agrees; a node that read something "
+        "disagrees on the list before any finding is consulted.",
+    "compare: the panel state is not compared":
+        "unreachable: the two states differ only when one node read "
+        "sources and the other did not, and `_decision_fields` compares "
+        "the readable lists, which differ in exactly that case. The "
+        "explicit comparison stays because it prints the clearer "
+        "disagreement to the receipt.",
+    "compare: diagnostic prose becomes consensus-critical":
+        "equivalent as written, and the mutation is the weaker one: it "
+        "adds a `reason` key to the dict `_decision_fields` returns, but "
+        "`_first_difference` reads a fixed list of keys and never looks "
+        "at it. Adding a field nothing compares cannot change a verdict. "
+        "A mutation that genuinely made prose consensus-critical would "
+        "have to extend `_first_difference` too - which is a different "
+        "contract, not a mutation of this one.",
+    "url: credentials in the authority are accepted":
+        "unreachable: without the `@` check `_host_of` keeps "
+        "`user:pass@data.example`, then splits on `:` and returns "
+        "`user` - a single label, which the two-label minimum in "
+        "`_admissible` refuses. The check stays because returning the "
+        "empty string says 'this has no host I will trust' rather than "
+        "quietly inventing one.",
+    "url: localhost is accepted":
+        "unreachable: `localhost` is a single label, and `_admissible` "
+        "requires at least two. The named check stays because it is the "
+        "one a reader looks for, and because the label rule below it is "
+        "one edit away from admitting a bare name.",
+    "publisher: a subdomain is a different publisher":
+        "unreachable, and the reason is worth knowing: the `www.` strip "
+        "is redundant given what follows it. `_registrable_domain` takes "
+        "the last two labels (three under a known multi-label suffix), "
+        "and `www.northwind-stats.example` has the same last two labels "
+        "as `northwind-stats.example`. Removing the strip therefore "
+        "cannot change any domain this function returns. It stays "
+        "because it makes the intent legible at the point of use, and "
+        "because the label arithmetic below it is one edit away from "
+        "needing it.",
+}
 
 
 def run_suite(contract_path: pathlib.Path) -> bool:
