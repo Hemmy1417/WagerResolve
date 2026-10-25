@@ -200,6 +200,27 @@ def _minutes_between(earlier: str, later: str) -> int:
     return second - first
 
 
+def _days_in_month(year: int, month: int) -> int:
+    """How many days that month really has, Gregorian.
+
+    Checking `day <= 31` is not a date check. `_days_from_civil` is a
+    pure conversion and will happily turn 2026-02-31 into a real instant
+    three days into March, so a settlement committed as one date would
+    mean another - and both nodes would agree on the wrong one.
+    """
+    if month == 2:
+        if year % 4 != 0:
+            return 28
+        if year % 100 != 0:
+            return 29
+        if year % 400 != 0:
+            return 28
+        return 29
+    if month == 4 or month == 6 or month == 9 or month == 11:
+        return 30
+    return 31
+
+
 def _parse_minute(stamp: str) -> int:
     """`YYYY-MM-DDTHH:MMZ` as whole minutes since an arbitrary epoch."""
     text = _minute(stamp)
@@ -216,7 +237,9 @@ def _parse_minute(stamp: str) -> int:
     if text[4] != "-" or text[7] != "-" or text[10] != "T" \
             or text[13] != ":":
         return -1
-    if month < 1 or month > 12 or day < 1 or day > 31:
+    if year < 1 or month < 1 or month > 12 or day < 1:
+        return -1
+    if day > _days_in_month(year, month):
         return -1
     if hour > 23 or minute > 59:
         return -1
@@ -913,11 +936,11 @@ class Venue:
     min_publishers: u16
     max_horizon_days: u16
     admission_ttl_minutes: u256
-    definition_version: u16
+    definition_version: u256
     definition_hash: str
     enabled: bool
     open_propositions: u16
-    proposition_count: u16
+    proposition_count: u256
     proposer_count: u16
 
 
@@ -933,7 +956,7 @@ class Ruling:
     distinct_publishers: u16
     assessed_at: str
     definition_hash: str
-    definition_version: u16
+    definition_version: u256
 
 
 @allow_storage
@@ -1124,10 +1147,10 @@ class WagerResolve(gl.Contract):
         venue.min_publishers = u16(int(min_publishers))
         venue.max_horizon_days = u16(int(max_horizon_days))
         venue.admission_ttl_minutes = u256(int(admission_ttl_minutes))
-        venue.definition_version = u16(1)
+        venue.definition_version = u256(1)
         venue.enabled = True
         venue.open_propositions = u16(0)
-        venue.proposition_count = u16(0)
+        venue.proposition_count = u256(0)
         venue.proposer_count = u16(0)
         venue.definition_hash = self._definition_of(venue)
         self.venue_total = u256(int(self.venue_total) + 1)
@@ -1169,7 +1192,8 @@ class WagerResolve(gl.Contract):
         venue.min_publishers = u16(int(min_publishers))
         venue.max_horizon_days = u16(int(max_horizon_days))
         venue.admission_ttl_minutes = u256(int(admission_ttl_minutes))
-        venue.definition_version = u16(int(venue.definition_version) + 1)
+        venue.definition_version = u256(
+            int(venue.definition_version) + 1)
         venue.definition_hash = self._definition_of(venue)
         return venue.definition_hash
 
@@ -1311,7 +1335,7 @@ class WagerResolve(gl.Contract):
         row.ruling.distinct_publishers = u16(0)
         row.ruling.assessed_at = ""
         row.ruling.definition_hash = ""
-        row.ruling.definition_version = u16(0)
+        row.ruling.definition_version = u256(0)
         for entry in prepared:
             source = row.sources.append_new_get()
             source.source_id = str(entry["source_id"])
@@ -1325,7 +1349,8 @@ class WagerResolve(gl.Contract):
         listing = self.venue_propositions.get_or_insert_default(
             str(venue.venue_id))
         listing.append(key)
-        venue.proposition_count = u16(int(venue.proposition_count) + 1)
+        venue.proposition_count = u256(
+            int(venue.proposition_count) + 1)
         self.proposition_total = u256(int(self.proposition_total) + 1)
         return key
 
@@ -1484,7 +1509,7 @@ class WagerResolve(gl.Contract):
             row.ruling.reason = REASON_NONE
             row.ruling.assessed_at = now
             row.ruling.definition_hash = str(venue.definition_hash)
-            row.ruling.definition_version = u16(
+            row.ruling.definition_version = u256(
                 int(venue.definition_version))
             row.ruling.sufficient_sources = u16(0)
             row.ruling.distinct_publishers = u16(0)
@@ -1512,7 +1537,8 @@ class WagerResolve(gl.Contract):
         row.ruling.distinct_publishers = u16(len(publishers))
         row.ruling.assessed_at = now
         row.ruling.definition_hash = str(venue.definition_hash)
-        row.ruling.definition_version = u16(int(venue.definition_version))
+        row.ruling.definition_version = u256(
+            int(venue.definition_version))
         row.status = PROPOSITION_ASSESSED
 
         if admission == ADMISSION_DECIDABLE:
