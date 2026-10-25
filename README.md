@@ -226,7 +226,7 @@ Everything below was measured at the deployed source.
 | Preflight invariants | 134 / 134 | `python scripts/preflight.py` |
 | GenVM lint | passed, 3 checks | `genvm-lint lint contracts/wagerresolve.py` |
 | GenVM check | 21 methods, 13 view / 8 write | `genvm-lint check contracts/wagerresolve.py` (linter 0.10.0) |
-| Mutation sweep | 74 / 85 killed, 11 equivalent by construction, 0 survived | `python -u scripts/mutate.py` |
+| Mutation sweep | 81 / 92 killed, 11 equivalent by construction, 0 survived | `python -u scripts/mutate.py` |
 | Live scenarios | 8 / 8, nineteen assertions, every one held | `python scripts/live.py --commit <sha>` |
 | Live re-verification | 97 checks, 0 discrepancies | `python scripts/verify.py` |
 | Integration suite | 4 tests, each on a fresh deployment | `gltest tests/integration -v -s --network studionet` |

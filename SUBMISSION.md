@@ -95,9 +95,10 @@ programme gating funding on a milestone condition being falsifiable.
 
 | Gate | Result |
 |---|---|
-| Direct Mode tests | 186 passed |
+| Direct Mode tests | 217 passed |
 | Preflight invariants | 134 / 134 |
-| Mutation sweep | 74 / 85 killed, 11 equivalent by construction, 0 survived |
+| Documentation audit | 21 / 21, 0 wrong |
+| Mutation sweep | 81 / 92 killed, 11 equivalent by construction, 0 survived |
 | GenVM lint | passed, 3 checks |
 | GenVM check | 21 methods, 13 view / 8 write |
 | Live scenarios | 8 / 8, nineteen assertions, every one held |
@@ -122,6 +123,39 @@ chain read-only with no key.
 | H | withdrawal returns the slot, a policy change supersedes | — |
 
 All five admission verdicts, on real validators reading real pages.
+
+## Two steward reviews, and what they found
+
+**First review** - three ways an untrusted account could grief the
+lifecycle. Closed: caps count work *in flight* and every terminal path
+releases the slot; a venue declares a mandatory `proposer_policy` with no
+default; the replay record is keyed per target and written only after
+bytes are fetched, hashed and read.
+
+**Second review** - two defects no live scenario could reach.
+
+- `_parse_minute` checked `day <= 31` and called that a date check. It is
+  not one: `_days_from_civil` is a pure conversion, so `2026-02-31`
+  parsed and *meant* `2026-03-03`. A settlement committed as one date
+  silently became another, with every node agreeing on the wrong one.
+  `_days_in_month` now applies the Gregorian rule, century exception
+  included, to `settles_at` and every `as_of` alike.
+- `definition_version` and `proposition_count` were `u16` and only ever
+  grew. `u16` raises `OverflowError` rather than wrapping, so a venue at
+  65,535 propositions would refuse every further one for good, and one at
+  65,535 policy changes could never tighten its policy again - the
+  recovery path the first review's fix depends on. Both are `u256` now,
+  on the venue and on the ruling that carries the version.
+
+Invalid dates are still rejected and the contract is still usable past
+those limits: 14 impossible dates refused, 7 real ones accepted including
+both leap-year edges, a venue proposing at 65,536 and at 10^12, and a
+policy change at 65,536. **15 of the 30 new tests fail against the
+pre-fix source**, which is how I know they test the fix rather than
+describe it.
+
+Every other `u16` in the contract is bounded by a constant far below the
+limit, and a test names each one with the bound that caps it.
 
 ## Limitations
 
