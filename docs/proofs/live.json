@@ -1,33 +1,33 @@
 {
-  "as_of": "2026-10-23T13:57Z",
+  "as_of": "2026-10-25T08:26Z",
   "chain_id": 61999,
-  "commit": "6495608",
-  "contract": "0x372916848A6E08464Bbd68d243807A3D7Aaf8065",
-  "contract_sha256": "9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c",
+  "commit": "8d4e066",
+  "contract": "0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175",
+  "contract_sha256": "926bc163565b965b0f5afa2532076e04f15193106aa5f55e1ed25451a322cb46",
   "deploy_consensus": "3 agree, 0 disagree, 2 idle of 5",
   "deploy_lifecycle": "FINALIZED",
-  "deploy_tx": "0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3",
-  "deployer": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
+  "deploy_tx": "0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2",
+  "deployer": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
   "documents": {
     "commentary.txt": {
       "bytes": 742,
       "sha256": "ea1bb9fdb012e76cd48c27dd1450b361dc688abeffa425f8f20c5030079ff8e6",
-      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/commentary.txt"
+      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/commentary.txt"
     },
     "directed.txt": {
       "bytes": 480,
       "sha256": "e8f9f01fcc375ae123bfa9d7bdfcfc347c6d31826209bfc5c835e316a1fd488a",
-      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/directed.txt"
+      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/directed.txt"
     },
     "rate-table-mirror.txt": {
       "bytes": 554,
       "sha256": "22f5e646fdeb9f327554c5406c5fcf04f4afb8228a0840766253b04fcbabb9db",
-      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
     },
     "rate-table.txt": {
       "bytes": 726,
       "sha256": "9cf6043d758689af1c39a94ab2d5d6397aca707cadba4918f98650d75b4c331d",
-      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+      "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
     }
   },
   "explorer": "https://explorer-studio.genlayer.com",
@@ -35,392 +35,392 @@
   "scenarios": {
     "a": {
       "proposition": {
-        "created_at": "2026-10-23T13:42Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "a-649560-6ac0",
+        "created_at": "2026-10-25T08:11Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "a-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if it is strictly greater than 4.40, NO if it is 4.40 or lower. If no figure is published for that date, the wager voids.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Document explicitly lists the 'Reference rate (%)' for the date 2026-10-21 as 4.50.",
+            "note": "Provides the Northwind statistical office reference rate table including the specific date 2026-10-21.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
-            "note": "Document republishes the reference rate for the date 2026-10-21 as 4.50.",
+            "note": "Republishes the reference rate from the statistical office for the requested date.",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
         "text_hash": "03c1723d64ceb54b6fc389af2c40d2bed90f385742f757a1625497df20cb8ae6",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "a-649560-6ac0",
+      "proposition_id": "a-8d4e06-3e58",
       "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if it is strictly greater than 4.40, NO if it is 4.40 or lower. If no figure is published for that date, the wager voids.",
       "ruling": {
         "admission": "DECIDABLE",
-        "assessed_at": "2026-10-23T13:43Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:11Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "a-649560-6ac0",
+        "proposition_id": "a-8d4e06-3e58",
         "reason": "NONE",
         "rounds_used": 1,
         "rule_complete": true,
         "status": "ASSESSED",
         "sufficient_sources": 2,
         "unambiguous": true,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
       ],
       "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
       "title": "a well-posed question on two published copies",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "b": {
       "proposition": {
-        "created_at": "2026-10-23T13:44Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "b-649560-6ac0",
+        "created_at": "2026-10-25T08:12Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "b-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if no figure is published.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Document S1 is a rate table showing the reference rate for the required date (2026-10-21) as 4.50%.",
+            "note": "Shows a dated rate table including 2026-10-21 reference rate (%) and status.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
             "note": "",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "DOES_NOT_PUBLISH_IT",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/commentary.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/commentary.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
         "text_hash": "03c1723d64ceb54b6fc389af2c40d2bed90f385742f757a1625497df20cb8ae6",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "b-649560-6ac0",
+      "proposition_id": "b-8d4e06-3e58",
       "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if no figure is published.",
       "ruling": {
         "admission": "UNSETTLEABLE",
-        "assessed_at": "2026-10-23T13:45Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:13Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "b-649560-6ac0",
+        "proposition_id": "b-8d4e06-3e58",
         "reason": "RULE_NOT_TIED_TO_THE_SOURCES",
         "rounds_used": 1,
         "rule_complete": true,
         "status": "ASSESSED",
         "sufficient_sources": 1,
         "unambiguous": true,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/commentary.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/commentary.txt"
       ],
       "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
       "title": "one source carries no figures at all",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "c": {
       "proposition": {
-        "created_at": "2026-10-23T13:46Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "c-649560-6ac0",
+        "created_at": "2026-10-25T08:14Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "c-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "YES if rates turn out to be interesting, NO otherwise.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
             "note": "",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "DOES_NOT_PUBLISH_IT",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
             "note": "",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "DOES_NOT_PUBLISH_IT",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "Interest rates will be an interesting topic for households over the coming months.",
         "text_hash": "f4efda6b5e4a8cad8df3c48ebc36f5474a07ebb57ba15cfa6b3f5ecd57ae79e7",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "c-649560-6ac0",
+      "proposition_id": "c-8d4e06-3e58",
       "rule": "YES if rates turn out to be interesting, NO otherwise.",
       "ruling": {
         "admission": "UNFALSIFIABLE",
-        "assessed_at": "2026-10-23T13:46Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:15Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 0,
         "falsifiable": false,
         "panel_state": "RULED",
-        "proposition_id": "c-649560-6ac0",
+        "proposition_id": "c-8d4e06-3e58",
         "reason": "MATTER_OF_OPINION",
         "rounds_used": 1,
         "rule_complete": false,
         "status": "ASSESSED",
         "sufficient_sources": 0,
         "unambiguous": false,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
       ],
       "text": "Interest rates will be an interesting topic for households over the coming months.",
       "title": "a question nobody could settle either way",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "d": {
       "proposition": {
-        "created_at": "2026-10-23T13:48Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "d-649560-6ac0",
+        "created_at": "2026-10-25T08:16Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "d-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "YES if the rate rises significantly, NO if it does not.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Publishes the Northwind reference rate.",
+            "note": "Publishes the Northwind reference rate by date, including methodology and provisional/final status.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
-            "note": "Publishes the Northwind reference rate.",
+            "note": "Republishes the Northwind reference rate by date for settlement purposes, including provisional status.",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate rises significantly by the end of next month.",
         "text_hash": "c06f9871355eb801024f5de7cb6057103b6edaeecc87e8458fd911daf39e907f",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "d-649560-6ac0",
+      "proposition_id": "d-8d4e06-3e58",
       "rule": "YES if the rate rises significantly, NO if it does not.",
       "ruling": {
         "admission": "AMBIGUOUS",
-        "assessed_at": "2026-10-23T13:48Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:17Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "d-649560-6ac0",
+        "proposition_id": "d-8d4e06-3e58",
         "reason": "UNDEFINED_TERM",
         "rounds_used": 1,
         "rule_complete": false,
         "status": "ASSESSED",
         "sufficient_sources": 2,
         "unambiguous": false,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
       ],
       "text": "The Northwind reference rate rises significantly by the end of next month.",
       "title": "a question two honest readers would read differently",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "e": {
       "proposition": {
-        "created_at": "2026-10-23T13:49Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "e-649560-6ac0",
+        "created_at": "2026-10-25T08:19Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "e-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if nothing is published.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Provides the reference rate for 2026-10-21.",
+            "note": "Document explicitly lists the Northwind reference rate for 2026-10-21 as 4.50%.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
-            "note": "Provides the reference rate for 2026-10-21.",
+            "note": "Document republishes the Northwind reference rate for 2026-10-21 as 4.50%.",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
         "text_hash": "03c1723d64ceb54b6fc389af2c40d2bed90f385742f757a1625497df20cb8ae6",
-        "venue_id": "strict-649560-6ac0"
+        "venue_id": "strict-8d4e06-3e58"
       },
-      "proposition_id": "e-649560-6ac0",
+      "proposition_id": "e-8d4e06-3e58",
       "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if nothing is published.",
       "ruling": {
         "admission": "UNSETTLEABLE",
-        "assessed_at": "2026-10-23T13:50Z",
-        "definition_hash": "a9ffbb8fbab6a1c0e5ec4027160a76fb0d2405d006eb59e8759883e64d61750a",
+        "assessed_at": "2026-10-25T08:19Z",
+        "definition_hash": "46f65fc6c29df649764a5d9a4109e1538b0761ba8aa017a27d62d843ee87fefd",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "e-649560-6ac0",
+        "proposition_id": "e-8d4e06-3e58",
         "reason": "RULE_NOT_TIED_TO_THE_SOURCES",
         "rounds_used": 1,
         "rule_complete": true,
         "status": "ASSESSED",
         "sufficient_sources": 2,
         "unambiguous": true,
-        "venue_id": "strict-649560-6ac0"
+        "venue_id": "strict-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table-mirror.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table-mirror.txt"
       ],
       "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
       "title": "two sources, one publisher, a venue that wants two",
-      "venue_id": "strict-649560-6ac0"
+      "venue_id": "strict-8d4e06-3e58"
     },
     "f": {
       "proposition": {
-        "created_at": "2026-10-23T13:51Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "f-649560-6ac0",
+        "created_at": "2026-10-25T08:20Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "f-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if nothing is published.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Shows Northwind reference rate table including 2026-10-21 value.",
+            "note": "Shows a rate table with a reference rate for 2026-10-21, the quantity needed by the proposition.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
             "note": "",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "DOES_NOT_PUBLISH_IT",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/directed.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/directed.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
         "text_hash": "03c1723d64ceb54b6fc389af2c40d2bed90f385742f757a1625497df20cb8ae6",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "f-649560-6ac0",
+      "proposition_id": "f-8d4e06-3e58",
       "rule": "Read the reference rate for 2026-10-21 from the rate table. YES if above 4.40, NO otherwise. Void if nothing is published.",
       "ruling": {
         "admission": "UNSETTLEABLE",
-        "assessed_at": "2026-10-23T13:52Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:21Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "f-649560-6ac0",
+        "proposition_id": "f-8d4e06-3e58",
         "reason": "RULE_NOT_TIED_TO_THE_SOURCES",
         "rounds_used": 1,
         "rule_complete": true,
         "status": "ASSESSED",
         "sufficient_sources": 1,
         "unambiguous": true,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "sources": [
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt",
-        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/directed.txt"
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt",
+        "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/directed.txt"
       ],
       "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
       "title": "a page that tells the reader what to answer",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "g": {
       "proposition": {
-        "created_at": "2026-10-23T13:53Z",
-        "proposed_by": "0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14",
-        "proposition_id": "g-649560-6ac0",
+        "created_at": "2026-10-25T08:22Z",
+        "proposed_by": "0x39a254F7187efDd3B72a27674328532eD3ba34bC",
+        "proposition_id": "g-8d4e06-3e58",
         "rounds_used": 1,
         "rule": "Read the rate for 2026-10-21. YES if above 4.40, NO otherwise. Void if nothing is published.",
-        "settles_at": "2026-11-12T13:41Z",
+        "settles_at": "2026-11-14T08:09Z",
         "sources": [
           {
-            "note": "Document explicitly lists the Northwind reference rate for 2026-10-21 as 4.50% final, which is the exact quantity the proposition depends on.",
+            "note": "The source explicitly lists the Northwind reference rate for the specific date 2026-10-21.",
             "publisher": "githubusercontent.com",
             "source_id": "S1",
             "state": "PUBLISHES_THE_QUANTITY",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/rate-table.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/rate-table.txt"
           },
           {
             "note": "",
             "publisher": "githubusercontent.com",
             "source_id": "S2",
             "state": "UNREACHABLE",
-            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/6495608/fixtures/no-such-document.txt"
+            "url": "https://raw.githubusercontent.com/Hemmy1417/WagerResolve/8d4e066/fixtures/no-such-document.txt"
           }
         ],
         "status": "ASSESSED",
         "text": "The Northwind reference rate published for 2026-10-21 is strictly greater than 4.40 percent.",
         "text_hash": "03c1723d64ceb54b6fc389af2c40d2bed90f385742f757a1625497df20cb8ae6",
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
-      "proposition_id": "g-649560-6ac0",
+      "proposition_id": "g-8d4e06-3e58",
       "ruling": {
         "admission": "UNSETTLEABLE",
-        "assessed_at": "2026-10-23T13:54Z",
-        "definition_hash": "54ba43305b6399ec098dc1675825460dfca86dbfd2692acaed93afa27dfcaae6",
+        "assessed_at": "2026-10-25T08:23Z",
+        "definition_hash": "c14f264e40f25d56471880596d6ae09e8b09265b95ce8d72225e95c1bcf67499",
         "definition_version": 1,
         "distinct_publishers": 1,
         "falsifiable": true,
         "panel_state": "RULED",
-        "proposition_id": "g-649560-6ac0",
+        "proposition_id": "g-8d4e06-3e58",
         "reason": "RULE_NOT_TIED_TO_THE_SOURCES",
         "rounds_used": 1,
         "rule_complete": true,
         "status": "ASSESSED",
         "sufficient_sources": 1,
         "unambiguous": true,
-        "venue_id": "northwind-649560-6ac0"
+        "venue_id": "northwind-8d4e06-3e58"
       },
       "title": "a source that cannot be fetched",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     },
     "h": {
-      "proposition_id": "h-649560-6ac0",
+      "proposition_id": "h-8d4e06-3e58",
       "slots_after": {
         "proposer_limit": 2,
         "proposer_open": 0,
@@ -439,160 +439,160 @@
         "venue_limit": 8,
         "venue_open": 1
       },
-      "superseded": "a-649560-6ac0",
+      "superseded": "a-8d4e06-3e58",
       "title": "withdrawal returns the slot, a policy change supersedes",
-      "venue_id": "northwind-649560-6ac0"
+      "venue_id": "northwind-8d4e06-3e58"
     }
   },
   "schema": "wagerresolve-live/1",
-  "settles_at": "2026-11-12T13:41Z",
+  "settles_at": "2026-11-14T08:09Z",
   "stats": {
     "decidable": 1,
     "propositions": 8,
     "refused": 6,
     "venues": 2
   },
-  "tag": "-649560-6ac0",
+  "tag": "-8d4e06-3e58",
   "transactions": [
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3",
+      "tx": "0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2",
       "what": "deploy"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x1ecd1584df0049bf185065ed3d2799957271b5d5559546d8cc5487f60217f575",
-      "what": "register venue northwind-649560-6ac0"
-    },
-    {
-      "consensus": "5 agree, 0 disagree, 0 idle of 5",
-      "execution": "SUCCESS",
-      "lifecycle": "FINALIZED",
-      "tx": "0xd97e6285222815415079db1f69cca698113d4b77e01d5d6ab1477da7c02fa39c",
-      "what": "register venue strict-649560-6ac0 (two publishers)"
-    },
-    {
-      "consensus": "5 agree, 0 disagree, 0 idle of 5",
-      "execution": "SUCCESS",
-      "lifecycle": "FINALIZED",
-      "tx": "0xeb5ad4fc83ca9c837ab14264a6dbfb47efecc8eb1d4c57e4fcc2948c62f6fbad",
-      "what": "propose a-649560-6ac0"
+      "tx": "0x950f90ba12639b6f65d44206b829d9c7f498778526543b7490d255ff94294acb",
+      "what": "register venue northwind-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xaa87cf63e57641a1b0ebd459970f164e59b53d7df48e13b3f50202fb5ea20e95",
-      "what": "assess a-649560-6ac0"
+      "tx": "0xae74b4942614d9df90146025d87433ea6691c41d90466fdfd31c361de2c6a4ab",
+      "what": "register venue strict-8d4e06-3e58 (two publishers)"
     },
     {
       "consensus": "5 agree, 0 disagree, 0 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x1039a8f5e274281a8d786a59023a6028411a80c6a8a3024932ba3f6f15c86d86",
-      "what": "propose b-649560-6ac0"
+      "tx": "0x7571aad02f284775da3f93fb1d12b27494275068864d74be380176c37e9e46a2",
+      "what": "propose a-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x3db599b86f553a0fc07b0e64be12ba728cfd2c8951850721d84389234987fef1",
-      "what": "assess b-649560-6ac0"
+      "tx": "0xc04d50371c8336e3d36e002dbbaab6c92f398040e6f6a45fc216586f3146b749",
+      "what": "assess a-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xbd8f62f15b35c309e0257318eb25c8bd3743172594026b0ab5705a2c58c9f338",
-      "what": "propose c-649560-6ac0"
+      "tx": "0x9a92f1aad75a346b80168a469535819111f06dc88a5eacb0416c47879e5d6472",
+      "what": "propose b-8d4e06-3e58"
+    },
+    {
+      "consensus": "3 agree, 0 disagree, 2 idle of 5",
+      "execution": "SUCCESS",
+      "lifecycle": "FINALIZED",
+      "tx": "0x8c3e8f67d76924a33e86e1692ca64b2808d338f329988755ab09173aba07f1ce",
+      "what": "assess b-8d4e06-3e58"
+    },
+    {
+      "consensus": "5 agree, 0 disagree, 0 idle of 5",
+      "execution": "SUCCESS",
+      "lifecycle": "FINALIZED",
+      "tx": "0x578897a5eec38b98f69d580fbadbbe249353de49ae54fa92f057376503189b3a",
+      "what": "propose c-8d4e06-3e58"
+    },
+    {
+      "consensus": "3 agree, 2 disagree, 0 idle of 5",
+      "execution": "SUCCESS",
+      "lifecycle": "FINALIZED",
+      "tx": "0xb97d04c3e753117cc27427a06d6f50a7cf874217a05e5eb436639eb5a2f2de1e",
+      "what": "assess c-8d4e06-3e58"
+    },
+    {
+      "consensus": "5 agree, 0 disagree, 0 idle of 5",
+      "execution": "SUCCESS",
+      "lifecycle": "FINALIZED",
+      "tx": "0xa2e4412f2815da3ac33ffb2a667a6634614d7089f3553dcf80fc5db0d49f71f4",
+      "what": "propose d-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 1 disagree, 1 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xb3620c3f443f3324bb59e95ba36b5433e7cc95378bf18c6b9733c3d98d068094",
-      "what": "assess c-649560-6ac0"
+      "tx": "0x26af5bbdc926db07b91daa039c9069fb612ff35919b4de81d539b413ef413f45",
+      "what": "assess d-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xf59cae3d42835b9645a102255daedf28a89f2fd5939ea6afc587b50d5072aa8d",
-      "what": "propose d-649560-6ac0"
+      "tx": "0x3bd4b6c0db2cdb8b087bb0f91d679de8b07c9b946bef0282a558ee315011f995",
+      "what": "propose e-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x96f50a40600702c6bc0d81c1f9a25514b4b6de4ec9378c0c3088d68da1c1cff7",
-      "what": "assess d-649560-6ac0"
+      "tx": "0xa030a79a08c0dfbb61dc09fab092969a5f3b4e1ea1cc31b2f26f2ecb270e7738",
+      "what": "assess e-8d4e06-3e58"
     },
     {
       "consensus": "5 agree, 0 disagree, 0 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x6aeb2dcb6713362186c2f7365e715924ce61b01e36227742ba402d41a301f49e",
-      "what": "propose e-649560-6ac0"
+      "tx": "0x59a101e5dc7c4fc65ce5eae7a3686770c51e9808dae3d9569cbff61b829b1bd9",
+      "what": "propose f-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x016eae93c0af177ebe8dcd2089b3e548dd27e60a529b1dc889ce2d4fec55ebd3",
-      "what": "assess e-649560-6ac0"
+      "tx": "0x6051cc6b7acf7aaf6f4a375e82a21153536a433aa837e37ae305aba2364d9120",
+      "what": "assess f-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x1038e9dbffa9a5d6e904afb997e189ec2b749a411f17b2bd5cf92a283af4cdd3",
-      "what": "propose f-649560-6ac0"
+      "tx": "0xd63c43edc71eea7f19fc5e6165e6fde5eb838314b6d910801987e477b4419d1f",
+      "what": "propose g-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xa0cfc9282ca1d2baae1a2e47d83014d3168968285952c87f522a6389569808f7",
-      "what": "assess f-649560-6ac0"
+      "tx": "0xcb6faf39e1454d4f73b17e682c7d746ae684e58eb63f78e0cef7ff839dd5f62a",
+      "what": "assess g-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xb60451c6a07d987d65538a950a0ba74987f8c7e08827a9ed7ca1943d4f02c8b0",
-      "what": "propose g-649560-6ac0"
+      "tx": "0x3df2523054debb397a1a5b77b4b6bc1b22dc783c1d74c699a61b95ca92af254b",
+      "what": "propose h-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0x0d3f6e1bb1bd239f44e04ae6b15fa618a01e91ada4234620cb1715c84223f589",
-      "what": "assess g-649560-6ac0"
+      "tx": "0xf2a2eda409ead391b48d3e23e04192a6a1f2c9e1799ca43230eae2cdcfb2dfb4",
+      "what": "withdraw h-8d4e06-3e58"
     },
     {
       "consensus": "3 agree, 0 disagree, 2 idle of 5",
       "execution": "SUCCESS",
       "lifecycle": "FINALIZED",
-      "tx": "0xedc1b0a2e0bff41eda771a1fc43d01c59250d87332bbc68e91b45463acc9b4bf",
-      "what": "propose h-649560-6ac0"
-    },
-    {
-      "consensus": "5 agree, 0 disagree, 0 idle of 5",
-      "execution": "SUCCESS",
-      "lifecycle": "FINALIZED",
-      "tx": "0xcaf7b0bbd9967bce006996878b65bb94bbf4a81062513f9db25839ecac6a6b1c",
-      "what": "withdraw h-649560-6ac0"
-    },
-    {
-      "consensus": "3 agree, 0 disagree, 2 idle of 5",
-      "execution": "SUCCESS",
-      "lifecycle": "FINALIZED",
-      "tx": "0x9be504c2a70ca68783b61ce18dbd31dba5dd327986293ab5c46a1e9eef999ff1",
-      "what": "tighten northwind-649560-6ac0"
+      "tx": "0xea370fce0c3366e95a59beb1dfe81b58e2bf8692e1e6802657fecbc763bb59a5",
+      "what": "tighten northwind-8d4e06-3e58"
     }
   ]
 }

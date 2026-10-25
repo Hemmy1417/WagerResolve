@@ -9,11 +9,11 @@ taught.
 |---|---|
 | Network | GenLayer Studionet, chain **61999** |
 | RPC | `https://studio.genlayer.com/api` |
-| Contract | [`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) |
-| Deploy transaction | [`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3) |
+| Contract | [`0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175`](https://explorer-studio.genlayer.com/address/0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175) |
+| Deploy transaction | [`0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2`](https://explorer-studio.genlayer.com/tx/0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2) |
 | Source | `contracts/wagerresolve.py` |
-| sha256 | `9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c` |
-| Size | 70,595 bytes |
+| sha256 | `926bc163565b965b0f5afa2532076e04f15193106aa5f55e1ed25451a322cb46` |
+| Size | 71,377 bytes |
 | Lifecycle | FINALIZED |
 | Consensus | FINALIZED, SUCCESS, 3 agree / 0 disagree / 2 idle of 5 |
 
@@ -77,7 +77,8 @@ created that address, rather than taking a constant on trust.
 | # | Contract | Deployed bytes | What it was |
 |---|---|---|---|
 | 1 | [`0xE8ed85AF…6f78`](https://explorer-studio.genlayer.com/address/0xE8ed85AFe4E33c5B59B5141cDC3f8F40ADEb6f78) | `5e9731e8…` | three runs, eight scenarios green - and a defect none of them could reach |
-| 2 | [`0x37291684…8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) | `9adcc1e9…` | **canonical** - eight scenarios, nineteen assertions, every one held |
+| 2 | [`0x37291684…8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065) | `9adcc1e9…` | a second review found two defects no scenario here could reach |
+| 3 | [`0x3AA0CAD5…a175`](https://explorer-studio.genlayer.com/address/0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175) | `926bc163…` | **canonical** - eight scenarios, nineteen assertions, every one held |
 
 Deployment 1 is historical, not wrong. Its live evidence is accurate for
 the bytes it carries, and every assertion made against it held. What it
@@ -91,6 +92,23 @@ died with `the ratified payload did not parse`, and a proposition naming
 one oversized page could never be assessed at all - not refused, not
 retried, permanently stuck. A refused page is now reported as exactly one
 byte over the cap, and the gate admits exactly that.
+
+**The second review, and two more defects.** A steward found that
+`_parse_minute` checked `day <= 31` and called that a date check. It is
+not one: `_days_from_civil` is a pure conversion, so `2026-02-31` parsed
+and meant `2026-03-03` - a settlement committed as one date silently
+became another, and every node agreed on the wrong one. The same review
+found `definition_version` and `proposition_count` were `u16` and only
+ever grew. `u16` raises `OverflowError` rather than wrapping, so a venue
+that had seen 65,535 propositions would refuse every further one for
+good, and one that had changed its policy 65,535 times could never
+tighten it again - which is the recovery path the first review's fix
+depends on.
+
+Neither was reachable by any scenario in the live run, and that is the
+honest limit of eight scenarios: they prove the paths they walk. Both
+are now in the mutation sweep, one mutation per leap-year clause and one
+per widened counter, so neither can return unnoticed.
 
 It was found by the mutation sweep, and not on the first attempt. The
 mutation `fetch: an oversized body is read` survived; the test written to

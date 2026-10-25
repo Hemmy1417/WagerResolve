@@ -268,8 +268,8 @@ MUTATIONS = [
      'policy")\n',
      ""),
     ("grief: a policy change does not bump the version",
-     "        venue.definition_version = u16(int(venue.definition_version) "
-     "+ 1)\n",
+     "        venue.definition_version = u256(\n"
+     "            int(venue.definition_version) + 1)\n",
      ""),
 
     # -- admission of a proposition ---------------------------------------
@@ -359,9 +359,32 @@ MUTATIONS = [
      "    if len(text) < 16:\n        return \"\"\n",
      ""),
     ("time: an impossible month or day is accepted",
-     "    if month < 1 or month > 12 or day < 1 or day > 31:\n"
+     "    if year < 1 or month < 1 or month > 12 or day < 1:\n"
      "        return -1\n",
      ""),
+    ("time: a day the month does not have is accepted",
+     "    if day > _days_in_month(year, month):\n        return -1\n",
+     ""),
+    ("time: every month has 31 days",
+     "    if month == 4 or month == 6 or month == 9 or month == 11:\n"
+     "        return 30\n",
+     ""),
+    ("time: february always has 29 days",
+     "        if year % 4 != 0:\n            return 28\n",
+     ""),
+    ("time: the century exception is dropped",
+     "        if year % 100 != 0:\n            return 29\n"
+     "        if year % 400 != 0:\n            return 28\n",
+     "        return 29\n"),
+    ("counters: a venue's propositions are counted in 16 bits",
+     "    proposition_count: u256",
+     "    proposition_count: u16"),
+    ("counters: a venue's policy version is counted in 16 bits",
+     "    definition_version: u256\n    definition_hash: str",
+     "    definition_version: u16\n    definition_hash: str"),
+    ("counters: a ruling's policy version is counted in 16 bits",
+     "    definition_hash: str\n    definition_version: u256",
+     "    definition_hash: str\n    definition_version: u16"),
     ("time: an impossible hour or minute is accepted",
      "    if hour > 23 or minute > 59:\n        return -1\n",
      ""),
@@ -401,8 +424,8 @@ MUTATIONS = [
     # -- storage and counters ---------------------------------------------
     ("store: the definition hash is not recorded with the ruling",
      "        row.ruling.definition_hash = str(venue.definition_hash)\n"
-     "        row.ruling.definition_version = "
-     "u16(int(venue.definition_version))\n"
+     "        row.ruling.definition_version = u256(\n"
+     "            int(venue.definition_version))\n"
      "        row.status = PROPOSITION_ASSESSED",
      "        row.status = PROPOSITION_ASSESSED"),
     ("store: a ruled proposition stays open",

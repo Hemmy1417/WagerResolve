@@ -1,7 +1,7 @@
 WagerResolve live run
-commit 6495608
-signer 0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14
-faucet: funded 0xAf07486Ca5d8B54f84E902C704944Bf9B1510E14
+commit 8d4e066
+signer 0x39a254F7187efDd3B72a27674328532eD3ba34bC
+faucet: funded 0x39a254F7187efDd3B72a27674328532eD3ba34bC
 
 fixtures, as the chain will fetch them:
   fixture rate-table.txt             726 bytes
@@ -9,64 +9,64 @@ fixtures, as the chain will fetch them:
   fixture commentary.txt             742 bytes
   fixture directed.txt               480 bytes
 
-deploying 70595 bytes, sha256 9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c
-deploy tx 0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3
+deploying 71377 bytes, sha256 926bc163565b965b0f5afa2532076e04f15193106aa5f55e1ed25451a322cb46
+deploy tx 0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2
 deploy lifecycle FINALIZED, execution SUCCESS, 3 agree, 0 disagree, 2 idle of 5
-contract 0x372916848A6E08464Bbd68d243807A3D7Aaf8065
+contract 0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175
 
 venues
-  register venue northwind-649560-6ac0         SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  register venue strict-649560-6ac0 (two publishers) SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  register venue northwind-8d4e06-3e58         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  register venue strict-8d4e06-3e58 (two publishers) SUCCESS  3 agree, 0 disagree, 2 idle of 5
 
 A - a well-posed question on two published copies
-  propose a-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
-  assess a-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose a-8d4e06-3e58                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess a-8d4e06-3e58                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  A admission                                          DECIDABLE
   ok  A is_admissible                                      True
 
 B - one source carries no figures at all
-  propose b-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
-  assess b-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose b-8d4e06-3e58                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess b-8d4e06-3e58                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  B admission                                          UNSETTLEABLE
   ok  B is_admissible                                      False
 
 C - a question nobody could settle either way
-  propose c-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess c-649560-6ac0                         SUCCESS  3 agree, 1 disagree, 1 idle of 5
+  propose c-8d4e06-3e58                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess c-8d4e06-3e58                         SUCCESS  3 agree, 2 disagree, 0 idle of 5
   ok  C admission                                          UNFALSIFIABLE
   ok  C is_admissible                                      False
 
 D - a question two honest readers would read differently
-  propose d-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess d-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose d-8d4e06-3e58                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess d-8d4e06-3e58                         SUCCESS  3 agree, 1 disagree, 1 idle of 5
   ok  D admission                                          AMBIGUOUS
   ok  D is_admissible                                      False
 
 E - two sources, one publisher, a venue that wants two
-  propose e-649560-6ac0                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
-  assess e-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose e-8d4e06-3e58                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess e-8d4e06-3e58                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  E admission                                          UNSETTLEABLE
   ok  E is_admissible                                      False
 
 F - a page that tells the reader what to answer
-  propose f-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess f-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose f-8d4e06-3e58                        SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  assess f-8d4e06-3e58                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  F admission                                          UNSETTLEABLE
   ok  F is_admissible                                      False
 
 G - a source that cannot be fetched
-  propose g-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
-  assess g-649560-6ac0                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose g-8d4e06-3e58                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  assess g-8d4e06-3e58                         SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  G admission                                          UNSETTLEABLE
   ok  G one source read                                    1
 
 H - withdrawal returns the slot, and a policy change supersedes
-  propose h-649560-6ac0                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  propose h-8d4e06-3e58                        SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  H a proposal takes a slot                            1
-  withdraw h-649560-6ac0                       SUCCESS  5 agree, 0 disagree, 0 idle of 5
+  withdraw h-8d4e06-3e58                       SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  H withdrawal returns it                              0
   ok  H the admitted question still stands                 True
-  tighten northwind-649560-6ac0                SUCCESS  3 agree, 0 disagree, 2 idle of 5
+  tighten northwind-8d4e06-3e58                SUCCESS  3 agree, 0 disagree, 2 idle of 5
   ok  H the old ruling is superseded                       SUPERSEDED
   ok  H and no longer admits a stake                       False
 

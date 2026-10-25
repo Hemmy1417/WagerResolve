@@ -14,15 +14,15 @@ all.
 **Network** — GenLayer Studionet, chain 61999
 
 **Contract** —
-[`0x372916848A6E08464Bbd68d243807A3D7Aaf8065`](https://explorer-studio.genlayer.com/address/0x372916848A6E08464Bbd68d243807A3D7Aaf8065)
+[`0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175`](https://explorer-studio.genlayer.com/address/0x3AA0CAD55B2B7469Cd080544C4ea9b2d8Edda175)
 
 **Deploy transaction** —
-[`0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3`](https://explorer-studio.genlayer.com/tx/0x58d2c2c83144e1eb4d0dbaf7ea7c2c5a128ad485b375c94b2db8401160b0b3c3),
+[`0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2`](https://explorer-studio.genlayer.com/tx/0x9dddd2c2c69f6a8eebb2ee5ee3550b15f411fe6c8511b5145e36b80995daaef2),
 FINALIZED, 3 agree / 0 disagree / 2 idle of 5
 
 **Source** — `contracts/wagerresolve.py`, sha256
-`9adcc1e902988d2491323e68ca35bdc020b5efe0136d98b862d52b22219ba23c`,
-70,595 bytes. The deployed bytes are that file: `scripts/verify.py` reads
+`926bc163565b965b0f5afa2532076e04f15193106aa5f55e1ed25451a322cb46`,
+71,377 bytes. The deployed bytes are that file: `scripts/verify.py` reads
 the contract back off the chain with `gen_getContractCode` and compares
 the hash.
 
